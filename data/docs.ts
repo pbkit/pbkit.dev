@@ -1,7 +1,11 @@
-import toc from "../docs/toc.json" assert { type: "json" };
+import TOC from "../docs/toc.json" assert { type: "json" };
 import { titleCase } from "https://deno.land/x/case@2.1.1/mod.ts";
 import { walk } from "https://deno.land/std@0.130.0/fs/mod.ts";
 import * as path from "https://deno.land/std@0.130.0/path/mod.ts";
+
+interface ITOC {
+  [category: string]: string[];
+}
 
 type RawTableOfContents = Record<string, RawTableOfContentsEntry>;
 
@@ -35,13 +39,13 @@ export const CATEGORIES: TableOfContentsCategory[] = [];
 const DOCS_DIR = "./docs";
 const PARENT_NAME = "index";
 
-const RAW_TOC: RawTableOfContents = toc.categories.reduce<RawTableOfContents>(
+const RAW_TOC: RawTableOfContents = Object.keys(TOC).reduce<RawTableOfContents>(
   (prev, category) => {
     return {
       ...prev,
       [category]: {
         title: titleCase(category),
-        pages: [],
+        pages: (TOC as ITOC)[category].map((page) => [page, titleCase(page)]),
       },
     };
   },
@@ -58,7 +62,7 @@ for await (const entry of walk(DOCS_DIR, { exts: [".md"] })) {
       pages: name === PARENT_NAME ? [] : [[name, titleCase(name)]],
     };
   } else {
-    if (name !== PARENT_NAME) {
+    if (name !== PARENT_NAME && !RAW_TOC[relativeDir].pages.find(([page]) => page === name)) {
       RAW_TOC[relativeDir].pages.push([
         name,
         titleCase(name),

@@ -1,3 +1,6 @@
 {
-  "categories": ["introduction", "getting-started", "concepts", "pollapo"]
+  "introduction": [],
+  "getting-started": ["installation", "setup-pollapo"],
+  "concepts": ["architecture"],
+  "pollapo": []
 }
