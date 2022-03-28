@@ -66,7 +66,10 @@ function Intro() {
           <b>Protobuf schema compiler</b> like protoc, pb.
         </li>
         <li>
-          <b>Chrome devTools</b>: pbkit-devtools.
+          <b>Chrome DevTools</b>: pbkit-devtools.
+        </li>
+        <li>
+          <b>VSCode extension with protobuf language server</b>: vscode-pbkit.
         </li>
       </ul>
     </section>
