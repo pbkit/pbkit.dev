@@ -1,1 +1,1 @@
-`pbkit` is awesome.
+Welcome to the `pbkit`.
