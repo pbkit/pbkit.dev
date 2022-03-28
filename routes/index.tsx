@@ -33,7 +33,7 @@ function Hero() {
 
   return (
     <section class={container}>
-      <img src="/pbkit_logo.png" width="100" class={tw`my-8`} />
+      <img src="/pbkit.svg" width="100" class={tw`my-8`} />
       <div class={tw`ml(4 md:8)`}>
         <h1 class={title}>
           pbkit

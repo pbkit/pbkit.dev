@@ -27,7 +27,7 @@ export default function Navbar({ active }: NavbarProps) {
         class={tw`flex items-center justify-between max-w-screen-lg mx-auto`}
       >
         <a class={tw`flex items-center gap-2 mx-4`} href="/">
-          <img src="/pbkit_logo.png" width="32" />
+          <img src="/pbkit.svg" width="32" />
           <b>pbkit</b>
         </a>
         <ul class={tw`flex justify-end gap-8 mx-4`}>
