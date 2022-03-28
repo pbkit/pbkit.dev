@@ -11,8 +11,8 @@ const LINKS = [
     title: "discord",
     href: "https://discord.com/invite/PHmV3nhvQq",
   },
+  { title: "twitter", href: "https://twitter.com/pbkit_" },
   { title: "deno.land/x/pbkit", href: "https://deno.land/x/pbkit" },
-  { title: "pbkit", href: "https://twitter.com/pbkit_" },
 ];
 
 export default function Footer() {
