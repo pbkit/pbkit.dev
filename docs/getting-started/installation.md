@@ -8,8 +8,7 @@
 **Using homebrew**
 
 ```bash
-brew tap pbkit/tap
-brew install pbkit
+brew install pbkit/tap/pbkit
 ```
 
 ## Linux

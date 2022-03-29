@@ -97,8 +97,7 @@ function GettingStarted() {
         Then, run the following command to install both `pb` and `pollapo` cli:
       </p>
       <pre class={tw`overflow-x-auto py-2 px-4 bg(gray-100)`}>
-        brew tap pbkit/tap<br />
-        brew install pbkit
+        brew install pbkit/tap/pbkit
       </pre>
       <p class={tw`text-gray-800`}>
         Once installed, you can use the `pollapo` command to install your
