@@ -1,7 +1,6 @@
 {
   "introduction": [],
   "getting-started": ["installation", "setup-pollapo"],
-  "concepts": ["architecture"],
   "pb": [],
   "pollapo": []
 }
