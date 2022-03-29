@@ -65,8 +65,8 @@ function Main(props: { path: string; page: Page }) {
       <div class={main}>
         <MobileSidebarIcon />
         <div class={tw`w-full flex gap-6`}>
-        <DesktopSidebar path={props.path} />
-        <Content page={props.page} />
+          <DesktopSidebar path={props.path} />
+          <Content page={props.page} />
         </div>
       </div>
     </>
@@ -74,9 +74,13 @@ function Main(props: { path: string; page: Page }) {
 }
 
 function MobileSidebarIcon() {
-  return <div class={tw`md:hidden w-min ml-auto p-2 mt-4 rounded-full sticky top-4 right-0 bg-gray-100`}>
-    <label for="docs_sidebar">
-    <svg
+  return (
+    <div
+      class={tw
+        `md:hidden w-min ml-auto p-2 mt-4 rounded-full sticky top-4 right-0 bg-gray-100`}
+    >
+      <label for="docs_sidebar">
+        <svg
           class={tw`h-6 w-6`}
           stroke="currentColor"
           fill="none"
@@ -90,8 +94,9 @@ function MobileSidebarIcon() {
           >
           </path>
         </svg>
-        </label>
-  </div>
+      </label>
+    </div>
+  );
 }
 
 function MobileSidebar(props: { path: string }) {
