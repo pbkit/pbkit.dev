@@ -2,9 +2,9 @@
 
 It is written in **TypeScript** and uses the **Deno API**.
 
-However, it can be executed in **any JavaScript environment** (including Node.js or
-web browser) because it does not use platform APIs inside the `core` directory.
-
+However, it can be executed in **any JavaScript environment** (including Node.js
+or web browser) because it does not use platform APIs inside the `core`
+directory.
 
 ## What is Protobuf?
 
@@ -30,10 +30,10 @@ web browser) because it does not use platform APIs inside the `core` directory.
 
 ### GUI
 
-  - pbkit-devtools (Chrome Extension)
-    - <img width=200 src="https://user-images.githubusercontent.com/690661/152089698-e519047e-c073-473b-a96a-fca295cd7263.jpg" />
-    - [Github: pbkit/pbkit-devtools](https://github.com/pbkit/pbkit-devtools)
-    - [Chrome web store: pbkit-devtools](https://chrome.google.com/webstore/detail/pbkit-devtools/fjacmiijeihblfhobghceofniolonhca)
+- pbkit-devtools (Chrome Extension)
+  - <img width=200 src="https://user-images.githubusercontent.com/690661/152089698-e519047e-c073-473b-a96a-fca295cd7263.jpg" />
+  - [Github: pbkit/pbkit-devtools](https://github.com/pbkit/pbkit-devtools)
+  - [Chrome web store: pbkit-devtools](https://chrome.google.com/webstore/detail/pbkit-devtools/fjacmiijeihblfhobghceofniolonhca)
 
 ### Library
 

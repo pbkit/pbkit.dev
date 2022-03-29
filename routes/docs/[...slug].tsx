@@ -57,31 +57,41 @@ export default function DocsPage(props: PageProps<Data>) {
   );
 }
 
-function Title() {
-  const title = tw`text(2xl gray-900) tracking-tight font-extrabold`;
-  const pageName = tw`font-light`;
-  const subtitle = tw`text(sm gray-800)`;
-  return (
-    <>
-      <p class={title}>
-        <a href="/">pbkit</a> <span class={pageName}>docs</span>
-      </p>
-      <p class={subtitle}>The next-generation protobuf toolkit.</p>
-    </>
-  );
-}
-
 function Main(props: { path: string; page: Page }) {
-  const main = tw`mx-auto max-w-screen-lg px-4 flex gap-6`;
+  const main = tw`relative mx-auto max-w-screen-lg px-4`;
   return (
     <>
       <MobileSidebar path={props.path} />
       <div class={main}>
+        <MobileSidebarIcon />
+        <div class={tw`w-full flex gap-6`}>
         <DesktopSidebar path={props.path} />
         <Content page={props.page} />
+        </div>
       </div>
     </>
   );
+}
+
+function MobileSidebarIcon() {
+  return <div class={tw`md:hidden w-min ml-auto p-2 mt-4 rounded-full sticky top-4 right-0 bg-gray-100`}>
+    <label for="docs_sidebar">
+    <svg
+          class={tw`h-6 w-6`}
+          stroke="currentColor"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M4 6h16M4 12h16M4 18h7"
+          >
+          </path>
+        </svg>
+        </label>
+  </div>
 }
 
 function MobileSidebar(props: { path: string }) {
@@ -89,7 +99,6 @@ function MobileSidebar(props: { path: string }) {
   const backdrop = tw`absolute inset-0 bg-gray-800 opacity-75`;
   const sidebar = tw
     `relative flex-1 flex flex-col w-[16rem] h-full bg-white border(r-2 gray-100)`;
-  const heading = tw`p-4 border(b-2 gray-100)`;
   const items = tw`pt-2 pb-16 px-4 overflow-x-auto`;
   return (
     <>
@@ -103,9 +112,6 @@ function MobileSidebar(props: { path: string }) {
       <div class={container}>
         <label class={backdrop} for="docs_sidebar" />
         <div class={sidebar}>
-          <div class={heading}>
-            <Title />
-          </div>
           <nav class={items}>
             <DocsSidebar path={props.path} />
           </nav>
@@ -127,8 +133,8 @@ function DesktopSidebar(props: { path: string }) {
 }
 
 function Content(props: { page: Page }) {
-  const main = tw`py-8 overflow-hidden w-full`;
-  const title = tw`text(4xl gray-900) tracking-tight font-extrabold mt-6`;
+  const main = tw`py-8 pt-4 overflow-hidden w-full`;
+  const title = tw`text(4xl gray-900) tracking-tight font-extrabold md:mt-6`;
   const body = tw`mt-6`;
   const html = gfm.render(props.page.markdown);
   return (

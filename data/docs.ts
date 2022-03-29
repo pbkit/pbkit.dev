@@ -62,7 +62,10 @@ for await (const entry of walk(DOCS_DIR, { exts: [".md"] })) {
       pages: name === PARENT_NAME ? [] : [[name, titleCase(name)]],
     };
   } else {
-    if (name !== PARENT_NAME && !RAW_TOC[relativeDir].pages.find(([page]) => page === name)) {
+    if (
+      name !== PARENT_NAME &&
+      !RAW_TOC[relativeDir].pages.find(([page]) => page === name)
+    ) {
       RAW_TOC[relativeDir].pages.push([
         name,
         titleCase(name),

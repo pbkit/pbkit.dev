@@ -3,6 +3,7 @@ You can use `pollapo install` in github action.
 [riiid/pollapo-install](https://github.com/riiid/pollapo-install)
 
 Here is an example of workflow using `pollapo-install` action.
+
 ```yaml
 - name: Pollapo Install
   uses: riiid/pollapo-install@v1
