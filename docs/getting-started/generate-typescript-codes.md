@@ -33,9 +33,11 @@ More options are listed in
 ## Codegen for real-world project.
 
 For re-compile the protobuf schema, add some options like this:
+
 ```bash
 pb gen ts --entry-path=".pollapo" --out-dir="generated" --ext-in-import=" "
 ```
+
 This will change the output directory and file extension for import statement.
 
 You can use `@pbkit/grpc-web-client` library for creating gRPC-Web client.
@@ -49,7 +51,7 @@ the service and messages like this.
 
 ```tsx
 import { createGrpcWebClientImpl } from "@pbkit/grpc-web-client";
-import { createServiceClient } from 'generated/services/pbkit/pingpong/PingPongService"';
+import { createServiceClient } from "generated/services/pbkit/pingpong/PingPongService";
 import { Ping, Pong } from "generated/messages/pbkit/pingpong";
 
 // Create service client.
@@ -65,9 +67,12 @@ const sendPing = async (request: Ping): Promise<Pong> => {
   return pingPongService.pingpong(request);
 };
 
-sendPing({hello: "hi"}).then(console.log);
+sendPing({ hello: "hi" }).then(console.log);
 // Result
 // { "world": "Pong" }
 ```
 
-If you want to see more advanced usages with `pbkit/interface-pingpong-server` or React, explore [pbkit/pingpong-client](https://github.com/pbkit/pingpong-client) for more informations.
+If you want to see more advanced usages with `pbkit/interface-pingpong-server`
+or React, explore
+[pbkit/pingpong-client](https://github.com/pbkit/pingpong-client) for more
+informations.
