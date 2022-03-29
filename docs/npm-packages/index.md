@@ -1,4 +1,4 @@
-pbkit also provides npm packages related with protocol buffers and rpc.
+pbkit also provides npm packages related to protocol buffers and rpc.
 
 The `pbkit` npm package includes `pb-gen-ts` cli and `core`, `codegen` related
 codes.
