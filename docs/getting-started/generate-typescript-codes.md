@@ -30,7 +30,7 @@ set the value " " to remove file extension (like this: `--ext-in-import=" "`).
 More options are listed in
 [4.1 Generate Codes: pb gen ts](../pb/generate-codes#pb-gen-ts).
 
-## Codegen for real-world project.
+## Codegen for node.js project.
 
 For re-compile the protobuf schema, add some options like this:
 
@@ -49,7 +49,7 @@ yarn add @pbkit/grpc-web-client
 So If you installed `pbkit/interface-pingpong-server` for example, you can use
 the service and messages like this.
 
-```tsx
+```typescript
 import { createGrpcWebClientImpl } from "@pbkit/grpc-web-client";
 import { createServiceClient } from "generated/services/pbkit/pingpong/PingPongService";
 import { Ping, Pong } from "generated/messages/pbkit/pingpong";
