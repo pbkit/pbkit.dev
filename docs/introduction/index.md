@@ -22,18 +22,25 @@ directory.
   - `protoc` has native binary dependencies, but `pb` command is written in pure
     TypeScript, so it can be used comfortably in Node.js projects, etc., and can
     even easily be run in a web browser.
-  - [How to install and how to use](/docs/getting-started/installation)
+  - [How to install and how to use](./cli/pb/README.md)
 - `pollapo` - A package manager for the protobuf schema.
   - A GitHub repository of `.proto` files is treated as a single pollapo
     package.
-  - [How to install and how to use](/docs/getting-started/installation)
+  - [How to install and how to use](./cli/pollapo/docs/en/getting-started.md)
 
-### GUI
+### Browser Extension
 
-- pbkit-devtools (Chrome Extension)
-  - <img width=200 src="https://user-images.githubusercontent.com/690661/152089698-e519047e-c073-473b-a96a-fca295cd7263.jpg" />
-  - [Github: pbkit/pbkit-devtools](https://github.com/pbkit/pbkit-devtools)
-  - [Chrome web store: pbkit-devtools](https://chrome.google.com/webstore/detail/pbkit-devtools/fjacmiijeihblfhobghceofniolonhca)
+  - pbkit-devtools
+    - <img width=300 src="https://user-images.githubusercontent.com/690661/161203806-a6d8a864-8693-4744-8f4a-51407f4aa6e7.png" />
+    - [repo](https://github.com/pbkit/pbkit-devtools)
+    - [chrome web store](https://chrome.google.com/webstore/detail/pbkit-devtools/fjacmiijeihblfhobghceofniolonhca)
+
+### Editor Extension
+
+  - vscode-pbkit
+    - Syntax highlight, Go to definition for VSCode.
+    - [repo](https://github.com/pbkit/vscode-pbkit)
+    - [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=pbkit.vscode-pbkit)
 
 ### Library
 
