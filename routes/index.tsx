@@ -12,7 +12,7 @@ export default function MainPage() {
         <title>pbkit</title>
         <meta
           name="description"
-          content="The next-generation protobuf toolkit."
+          content="Protobuf toolkit written in Deno/TypeScript"
         />
       </Head>
       <NavigationBar active="/" />
