@@ -1,4 +1,4 @@
-**pbkit** is a collection of next-generation tools related to protobuf.
+**Pbkit** is a collection of tools related to protobuf.
 
 It is written in **TypeScript** and uses the **Deno API**.
 
