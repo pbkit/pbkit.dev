@@ -39,7 +39,7 @@ function Hero() {
           pbkit
         </h1>
         <p class={subtitle}>
-          The next-generation protobuf toolkit.
+          Protobuf toolkit written in Deno/TypeScript
         </p>
       </div>
     </section>
