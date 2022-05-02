@@ -76,3 +76,6 @@ directory.
 
 pbkit is dual-licensed under Apache 2.0 and MIT terms.\
 see [LICENSE-APACHE][LICENSE-APACHE] and [LICENSE-MIT][LICENSE-MIT] for details.
+
+[LICENSE-APACHE]: https://github.com/pbkit/pbkit/blob/main/LICENSE-APACHE
+[LICENSE-MIT]: https://github.com/pbkit/pbkit/blob/main/LICENSE-MIT
