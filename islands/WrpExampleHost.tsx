@@ -17,7 +17,6 @@ export default function WrpExampleHost() {
       const value = getState().sliderValue;
       res.send({ value });
       stateChanges.on("sliderValue", (value) => res.send({ value }));
-      res.end({});
     }],
     [methodDescriptors.getTextValue, ({ res, getState }) => {
       const { text } = getState();
@@ -37,7 +36,7 @@ export default function WrpExampleHost() {
             value={sliderValue}
             min="0"
             max="100"
-            onChange={(e) => setSliderValue(+(e.target as any).value)}
+            onInput={(e) => setSliderValue(+(e.target as any).value)}
           />
         </label>
         <label>
@@ -45,7 +44,7 @@ export default function WrpExampleHost() {
           <input
             type="text"
             value={text}
-            onChange={(e) => setText((e.target as any).value)}
+            onInput={(e) => setText((e.target as any).value)}
           />
         </label>
       </div>
