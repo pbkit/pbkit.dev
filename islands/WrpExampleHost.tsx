@@ -1,6 +1,6 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
-import { Fragment, h, useEffect, useMemo, useState } from "../client_deps.ts";
+import { Fragment, h, useMemo, useState } from "../client_deps.ts";
 import { createWrpChannel } from "../../wrp-ts/src/channel.ts";
 import useWrpIframeSocket from "../wrp-example/useWrpIframeSocket.ts";
 import useWrpServer from "../wrp-example/useWrpServer.ts";
