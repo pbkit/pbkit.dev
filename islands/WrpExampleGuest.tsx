@@ -27,13 +27,18 @@ export default function WrpExampleGuest() {
     return () => void (unmounted = true);
   }, [serviceClient]);
   return (
-    <>
-      <p>{sliderValue}</p>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <label>
+        slider value:
+        <span style={{ fontSize: "3em" }}>{sliderValue}</span>
+      </label>
       <br />
-      <button onClick={onClick}>
-        show text!
+      <button style={{ border: "1px solid black" }} onClick={onClick}>
+        click me!
       </button>
-    </>
+    </div>
   );
 }
 

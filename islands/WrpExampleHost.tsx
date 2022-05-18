@@ -28,20 +28,55 @@ export default function WrpExampleHost() {
   ]);
   return (
     <>
-      <input
-        type="range"
-        value={sliderValue}
-        min="0"
-        max="100"
-        onChange={(e) => setSliderValue(+(e.target as any).value)}
+      <div>
+        <h2>host inputs</h2>
+        <label>
+          <span>slider</span>
+          <input
+            type="range"
+            value={sliderValue}
+            min="0"
+            max="100"
+            onChange={(e) => setSliderValue(+(e.target as any).value)}
+          />
+        </label>
+        <label>
+          <span>text</span>
+          <input
+            type="text"
+            value={text}
+            onChange={(e) => setText((e.target as any).value)}
+          />
+        </label>
+      </div>
+      <div>
+        <h2>iframe</h2>
+        <iframe
+          style={{ border: "1px solid black" }}
+          ref={iframeRef}
+          src="/wrp-example-guest"
+        />
+      </div>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            div {
+              display: flex;
+              flex-direction: column;
+              padding: 1em;
+            }
+            h2 {
+              font-size: 2em;
+            }
+            label > span {
+              margin-right: 1em;
+            }
+            input[type=text] {
+              border: 1px solid black;
+            }
+          `,
+        }}
       />
-      <br />
-      <input
-        type="text"
-        value={text}
-        onChange={(e) => setText((e.target as any).value)}
-      />
-      <iframe ref={iframeRef} src="/wrp-example-guest" />
     </>
   );
 }
