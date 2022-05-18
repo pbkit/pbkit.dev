@@ -14,7 +14,7 @@ export default function useWrpClientImpl(
   useEffect(() => {
     if (!channel) return;
     createWrpGuest({ channel }).then(
-      (guest) => setClientImpl(createWrpClientImpl({ guest })),
+      (guest) => setClientImpl(() => createWrpClientImpl({ guest })),
     );
   }, [channel]);
   return clientImpl;
