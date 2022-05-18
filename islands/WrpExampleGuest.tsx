@@ -12,6 +12,9 @@ import {
 export default function WrpExampleGuest() {
   const [sliderValue, setSliderValue] = useState(0);
   const serviceClient = useWrpExampleServiceClient();
+  const onClick = async () => {
+    alert((await serviceClient?.getTextValue({}))?.text);
+  };
   useEffect(() => {
     if (!serviceClient) return;
     let unmounted = false;
@@ -27,7 +30,7 @@ export default function WrpExampleGuest() {
     <>
       <p>{sliderValue}</p>
       <br />
-      <button onClick={() => alert(serviceClient?.getTextValue({}))}>
+      <button onClick={onClick}>
         show text!
       </button>
     </>
