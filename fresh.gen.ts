@@ -9,7 +9,8 @@ import * as $3 from "./routes/index.tsx";
 import * as $4 from "./routes/wrp-example-guest.tsx";
 import * as $5 from "./routes/wrp-example-host.tsx";
 import * as $$0 from "./islands/Counter.tsx";
-import * as $$1 from "./islands/WrpExample.tsx";
+import * as $$1 from "./islands/WrpExampleGuest.tsx";
+import * as $$2 from "./islands/WrpExampleHost.tsx";
 
 const manifest = {
   routes: {
@@ -22,7 +23,8 @@ const manifest = {
   },
   islands: {
     "./islands/Counter.tsx": $$0,
-    "./islands/WrpExample.tsx": $$1,
+    "./islands/WrpExampleGuest.tsx": $$1,
+    "./islands/WrpExampleHost.tsx": $$2,
   },
   baseUrl: import.meta.url,
 };
