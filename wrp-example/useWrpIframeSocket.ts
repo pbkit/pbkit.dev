@@ -1,6 +1,6 @@
 import { defer } from "https://deno.land/x/pbkit@v0.0.45/core/runtime/async/observer.ts";
 import { Ref, useEffect, useRef, useState } from "../client_deps.ts";
-import { Disposable, Socket } from "../../wrp-ts/src/socket.ts";
+import { Closer, Socket } from "../../wrp-ts/src/socket.ts";
 import { createIframeSocket } from "../../wrp-ts/src/glue/iframe.ts";
 
 export interface UseWrpIframeSocketResult {
@@ -11,7 +11,7 @@ export default function useWrpIframeSocket(): UseWrpIframeSocketResult {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [socket, setSocket] = useState<Socket | undefined>(undefined);
   useEffect(() => {
-    let socket: Disposable & Socket;
+    let socket: Closer & Socket;
     let unmounted = false;
     let waitForReconnect = defer<void>();
     const iframeElement = iframeRef.current!;
@@ -35,7 +35,7 @@ export default function useWrpIframeSocket(): UseWrpIframeSocketResult {
       void iframeElement.removeEventListener("load", tryReconnect);
     };
     function tryReconnect() {
-      if (socket) socket.dispose();
+      if (socket) socket.close();
       waitForReconnect.resolve();
       waitForReconnect = defer<void>();
     }

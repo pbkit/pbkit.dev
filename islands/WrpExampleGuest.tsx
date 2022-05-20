@@ -38,6 +38,12 @@ export default function WrpExampleGuest() {
       <button style={{ border: "1px solid black" }} onClick={onClick}>
         click me!
       </button>
+      <button
+        style={{ border: "1px solid black" }}
+        onClick={() => location.reload()}
+      >
+        refresh page!
+      </button>
     </div>
   );
 }
