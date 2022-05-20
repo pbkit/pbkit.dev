@@ -8,7 +8,7 @@ import {
 } from "https://deno.land/x/pbkit@v0.0.45/core/runtime/async/event-emitter.ts";
 import { useEffect, useRef } from "../client_deps.ts";
 import { WrpChannel } from "../../wrp-ts/src/channel.ts";
-import { createWrpHost } from "../../wrp-ts/src/host.ts";
+import { createWrpHost, WrpRequest } from "../../wrp-ts/src/host.ts";
 import { Metadata } from "../../wrp-ts/src/metadata.ts";
 import {
   createWrpServer,
@@ -21,10 +21,10 @@ export type MethodImpl<TState extends Record<string, any>, TReq, TRes> = [
   (
     params: {
       req: Parameters<
-        MethodImplHandler<TReq, TRes, Metadata, Metadata, Metadata>
+        MethodImplHandler<TReq, TRes, WrpRequest, Metadata, Metadata>
       >[0];
       res: Parameters<
-        MethodImplHandler<TReq, TRes, Metadata, Metadata, Metadata>
+        MethodImplHandler<TReq, TRes, WrpRequest, Metadata, Metadata>
       >[1];
       getState: GetStateFn<TState>;
       stateChanges: EventEmitter<TState>;
@@ -66,7 +66,7 @@ export default function useWrpServer<
       const server = await createWrpServer({ host, methods });
       server.listen();
     })();
-  }, [channel, methodImpls]);
+  }, [channel]);
   useEffect(() => {
     if (!ref.current) ref.current = createRef();
     const prev = { ...ref.current?.state };

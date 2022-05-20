@@ -12,12 +12,24 @@ export default function WrpExampleHost() {
   const { iframeRef, socket } = useWrpIframeSocket();
   const channel = useMemo(() => socket && createWrpChannel(socket), [socket]);
   useWrpServer(channel, { sliderValue, text }, [
-    [methodDescriptors.getSliderValue, ({ res, getState, stateChanges }) => {
-      res.header({});
-      const value = getState().sliderValue;
-      res.send({ value });
-      stateChanges.on("sliderValue", (value) => res.send({ value }));
-    }],
+    [
+      methodDescriptors.getSliderValue,
+      ({ req, res, getState, stateChanges }) => {
+        res.header({});
+        const value = getState().sliderValue;
+        res.send({ value });
+        const off = stateChanges.on(
+          "sliderValue",
+          (value) => res.send({ value }),
+        );
+        req.metadata?.on("cancel-response", teardown);
+        req.metadata?.on("close", teardown);
+        function teardown() {
+          off();
+          res.end({});
+        }
+      },
+    ],
     [methodDescriptors.getTextValue, ({ res, getState }) => {
       const { text } = getState();
       res.header({});
