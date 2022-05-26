@@ -1,7 +1,7 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
 import { Fragment, h, useMemo, useState } from "../client_deps.ts";
-import { createWrpChannel } from "../../wrp-ts/src/channel.ts";
+import { createWrpChannel } from "../wrp-ts/channel.ts";
 import useWrpIframeSocket from "../wrp-example/useWrpIframeSocket.ts";
 import useWrpServer from "../wrp-example/useWrpServer.ts";
 import { methodDescriptors } from "../wrp-example/generated/services/pbkit/wrp/example/WrpExampleService.ts";
@@ -18,9 +18,8 @@ export default function WrpIframeHost() {
         res.header({});
         const value = getState().sliderValue;
         res.send({ value });
-        const off = stateChanges.on(
-          "sliderValue",
-          (value) => res.send({ value }),
+        const off = stateChanges.on("sliderValue", (value) =>
+          res.send({ value })
         );
         req.metadata?.on("cancel-response", teardown);
         req.metadata?.on("close", teardown);
@@ -30,12 +29,15 @@ export default function WrpIframeHost() {
         }
       },
     ],
-    [methodDescriptors.getTextValue, ({ res, getState }) => {
-      const { text } = getState();
-      res.header({});
-      res.send({ text });
-      res.end({});
-    }],
+    [
+      methodDescriptors.getTextValue,
+      ({ res, getState }) => {
+        const { text } = getState();
+        res.header({});
+        res.send({ text });
+        res.end({});
+      },
+    ],
   ]);
   return (
     <>

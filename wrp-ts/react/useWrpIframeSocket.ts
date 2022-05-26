@@ -1,7 +1,7 @@
 import { defer } from "https://deno.land/x/pbkit@v0.0.45/core/runtime/async/observer.ts";
-import { Ref, useEffect, useRef, useState } from "../client_deps.ts";
-import { Closer, Socket } from "../wrp-ts/socket.ts";
-import { createIframeSocket } from "../wrp-ts/glue/iframe.ts";
+import { Ref, useEffect, useRef, useState } from "react";
+import { Closer, Socket } from "../socket.ts";
+import { createIframeSocket } from "../glue/iframe.ts";
 
 export interface UseWrpIframeSocketResult {
   iframeRef: Ref<HTMLIFrameElement>;

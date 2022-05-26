@@ -6,14 +6,11 @@ import {
   createEventEmitter,
   EventEmitter,
 } from "https://deno.land/x/pbkit@v0.0.45/core/runtime/async/event-emitter.ts";
-import { useEffect, useRef } from "../client_deps.ts";
-import { WrpChannel } from "../wrp-ts/channel.ts";
-import { createWrpHost, WrpRequest } from "../wrp-ts/host.ts";
-import { Metadata } from "../wrp-ts/metadata.ts";
-import {
-  createWrpServer,
-  createWrpServerImplBuilder,
-} from "../wrp-ts/rpc/server.ts";
+import { useEffect, useRef } from "react";
+import { WrpChannel } from "../channel.ts";
+import { createWrpHost, WrpRequest } from "../host.ts";
+import { Metadata } from "../metadata.ts";
+import { createWrpServer, createWrpServerImplBuilder } from "../rpc/server.ts";
 
 export type GetStateFn<TState> = () => TState;
 export type MethodImpl<TState extends Record<string, any>, TReq, TRes> = [

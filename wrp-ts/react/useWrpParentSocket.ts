@@ -1,8 +1,8 @@
-import { useEffect, useState } from "../client_deps.ts";
-import { Socket } from "../wrp-ts/socket.ts";
-import { createAndroidSocket } from "../wrp-ts/glue/android.ts";
-import { createIosSocket } from "../wrp-ts/glue/ios.ts";
-import { createParentWindowSocket } from "../wrp-ts/glue/parent-window.ts";
+import { useEffect, useState } from "react";
+import { Socket } from "../socket.ts";
+import { createAndroidSocket } from "../glue/android.ts";
+import { createIosSocket } from "../glue/ios.ts";
+import { createParentWindowSocket } from "../glue/parent-window.ts";
 
 export interface UseWrpParentSocketResult {
   socket: Socket | undefined;

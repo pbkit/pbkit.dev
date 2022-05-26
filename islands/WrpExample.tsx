@@ -5,8 +5,8 @@ import {
   EventBuffer,
 } from "https://deno.land/x/pbkit@v0.0.45/core/runtime/async/event-buffer.ts";
 import { Fragment, h, useEffect, useMemo, useState } from "../client_deps.ts";
-import { createWrpChannel, WrpChannel } from "../../wrp-ts/src/channel.ts";
-import { Type as WrpMessage } from "../../wrp-ts/src/generated/messages/pbkit/wrp/WrpMessage.ts";
+import { createWrpChannel, WrpChannel } from "../wrp-ts/channel.ts";
+import { Type as WrpMessage } from "../wrp-ts/generated/messages/pbkit/wrp/WrpMessage.ts";
 import useWrpParentSocket from "../wrp-example/useWrpParentSocket.ts";
 import useWrpServer from "../wrp-example/useWrpServer.ts";
 import {
