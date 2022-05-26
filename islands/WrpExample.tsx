@@ -18,6 +18,7 @@ import useWrpClientImpl from "../wrp-example/useWrpClientImpl.ts";
 
 export default function WrpExample() {
   const [sliderValue, setSliderValue] = useState(50);
+  const [recvSliderValue, setRecvSliderValue] = useState(50);
   const [text, setText] = useState("Hello World");
   const { socket } = useWrpParentSocket();
   const channel = useMemo(() => socket && createWrpChannel(socket), [socket]);
@@ -39,7 +40,7 @@ export default function WrpExample() {
     (async () => {
       for await (const { value } of await serviceClient.getSliderValue({})) {
         if (unmounted) return;
-        setSliderValue(value);
+        setRecvSliderValue(value);
       }
     })();
     return () => void (unmounted = true);
@@ -127,7 +128,7 @@ export default function WrpExample() {
       >
         <label>
           slider value:
-          <span style={{ fontSize: "3em" }}>{sliderValue}</span>
+          <span style={{ fontSize: "3em" }}>{recvSliderValue}</span>
         </label>
         <br />
         <button style={{ border: "1px solid black" }} onClick={onClick}>
