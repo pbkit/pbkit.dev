@@ -4,7 +4,14 @@ import {
   createEventBuffer,
   EventBuffer,
 } from "https://deno.land/x/pbkit@v0.0.45/core/runtime/async/event-buffer.ts";
-import { Fragment, h, useEffect, useMemo, useState } from "../client_deps.ts";
+import {
+  Fragment,
+  h,
+  tw,
+  useEffect,
+  useMemo,
+  useState,
+} from "../client_deps.ts";
 import { createWrpChannel, WrpChannel } from "../wrp-ts/channel.ts";
 import { Type as WrpMessage } from "../wrp-ts/generated/messages/pbkit/wrp/WrpMessage.ts";
 import useWrpParentSocket from "../wrp-example/useWrpParentSocket.ts";
@@ -19,6 +26,7 @@ import useWrpClientImpl from "../wrp-example/useWrpClientImpl.ts";
 export default function WrpExample() {
   const [sliderValue, setSliderValue] = useState(50);
   const [recvSliderValue, setRecvSliderValue] = useState(50);
+  const [responseCount, setResponseCount] = useState(0);
   const [text, setText] = useState("Hello World");
   const { socket } = useWrpParentSocket();
   const channel = useMemo(() => socket && createWrpChannel(socket), [socket]);
@@ -41,6 +49,7 @@ export default function WrpExample() {
       for await (const { value } of await serviceClient.getSliderValue({})) {
         if (unmounted) return;
         setRecvSliderValue(value);
+        setResponseCount((c) => c + 1);
       }
     })();
     return () => void (unmounted = true);
@@ -76,72 +85,80 @@ export default function WrpExample() {
       },
     ],
   ]);
+  const styles = {
+    main: tw`flex flex-col items-center gap-2 p-2 text-center`,
+    button: (color: string) =>
+      tw`w-full bg-${color}-400 hover:bg-${color}-500 text-white font-bold py-2 px-4 rounded`,
+    label: (color: string) =>
+      tw`w-full flex items-center rounded bg-${color}-100 p-2 gap-2`,
+  };
   return (
-    <div>
-      <div>
-        <h2>host inputs</h2>
-        <label>
-          <span>slider</span>
-          <input
-            type="range"
-            value={sliderValue}
-            min="0"
-            max="100"
-            onInput={(e) => setSliderValue(+(e.target as any).value)}
-          />
-        </label>
-        <label>
-          <span>text</span>
-          <input
-            type="text"
-            value={text}
-            onInput={(e) => setText((e.target as any).value)}
-          />
-        </label>
+    <>
+      <div class={styles.main}>
+        <h1 class={tw`text-xl font-bold`}>WrpExampleServer (Host)</h1>
+        <div class={tw`flex flex-col gap-4`}>
+          <label class={styles.label("blue")}>
+            <b>SliderValue</b>
+            <input
+              type="range"
+              class={tw`w-full`}
+              value={sliderValue}
+              min="0"
+              max="100"
+              onInput={(e) => setSliderValue(+(e.target as any).value)}
+            />
+          </label>
+          <label class={styles.label("green")}>
+            <b>TextValue</b>
+            <input
+              type="text"
+              class={tw`p-1`}
+              value={text}
+              onInput={(e) => setText((e.target as any).value)}
+            />
+          </label>
+        </div>
+      </div>
+      <div class={styles.main}>
+        <h1 class={tw`text-xl font-bold`}>WrpExampleClient (Guest)</h1>
+        <p>GetSliderValue is requested on initialized</p>
+        <div class={tw`flex flex-col items-center gap-2`}>
+          <div class={tw`flex items-center gap-2`}>
+            <label class={styles.label("blue")}>
+              <b>Slider value</b>
+              <p class={tw`text-4xl`}>{recvSliderValue}</p>
+            </label>
+            <label class={styles.label("red")}>
+              <b># of responses (GetSliderValue)</b>
+              <p class={tw`text-4xl`}>{responseCount}</p>
+            </label>
+          </div>
+          <div class={tw`w-full flex-1 flex flex-col items-center gap-2`}>
+            <button class={styles.button("blue")} onClick={onClick}>
+              Get TextValue from Server
+            </button>
+            <button
+              class={styles.button("orange")}
+              onClick={() => location.reload()}
+            >
+              Refresh page to reset
+            </button>
+          </div>
+        </div>
       </div>
       <style
         dangerouslySetInnerHTML={{
           __html: `
-            div {
-              display: flex;
-              flex-direction: column;
-              padding: 1em;
-            }
-            h2 {
-              font-size: 2em;
-            }
-            label > span {
-              margin-right: 1em;
-            }
-            input[type=text] {
-              border: 1px solid black;
-            }
-          `,
+        label > span {
+          margin-right: 1em;
+        }
+        input[type=text] {
+          border: 1px solid black;
+        }
+      `,
         }}
       />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <label>
-          slider value:
-          <span style={{ fontSize: "3em" }}>{recvSliderValue}</span>
-        </label>
-        <br />
-        <button style={{ border: "1px solid black" }} onClick={onClick}>
-          click me!
-        </button>
-        <button
-          style={{ border: "1px solid black" }}
-          onClick={() => location.reload()}
-        >
-          refresh page!
-        </button>
-      </div>
-    </div>
+    </>
   );
 }
 

@@ -1,6 +1,6 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
-import { Fragment, h, useMemo, useState } from "../client_deps.ts";
+import { Fragment, h, tw, useMemo, useState } from "../client_deps.ts";
 import { createWrpChannel } from "../wrp-ts/channel.ts";
 import useWrpParentSocket from "../wrp-example/useWrpParentSocket.ts";
 import useWrpServer from "../wrp-example/useWrpServer.ts";
@@ -39,40 +39,43 @@ export default function WrpExampleHost() {
       },
     ],
   ]);
+  const styles = {
+    main: tw`flex flex-col items-center gap-4 p-4 text-center`,
+    button: (color: string) =>
+      tw`w-full bg-${color}-400 hover:bg-${color}-500 text-white font-bold py-2 px-4 rounded`,
+    label: (color: string) =>
+      tw`flex flex-col items-center rounded bg-${color}-100 p-4 gap-4`,
+  };
   return (
     <>
-      <div>
-        <h2>host inputs</h2>
-        <label>
-          <span>slider</span>
-          <input
-            type="range"
-            value={sliderValue}
-            min="0"
-            max="100"
-            onInput={(e) => setSliderValue(+(e.target as any).value)}
-          />
-        </label>
-        <label>
-          <span>text</span>
-          <input
-            type="text"
-            value={text}
-            onInput={(e) => setText((e.target as any).value)}
-          />
-        </label>
+      <div class={styles.main}>
+        <h1 class={tw`text-2xl font-bold`}>WrpExampleServer (Host)</h1>
+        <div class={tw`flex flex-col gap-4`}>
+          <label class={styles.label("blue")}>
+            <b>SliderValue</b>
+            <input
+              type="range"
+              class={tw`w-full`}
+              value={sliderValue}
+              min="0"
+              max="100"
+              onInput={(e) => setSliderValue(+(e.target as any).value)}
+            />
+          </label>
+          <label class={styles.label("green")}>
+            <b>TextValue</b>
+            <input
+              type="text"
+              class={tw`p-2`}
+              value={text}
+              onInput={(e) => setText((e.target as any).value)}
+            />
+          </label>
+        </div>
       </div>
       <style
         dangerouslySetInnerHTML={{
           __html: `
-            div {
-              display: flex;
-              flex-direction: column;
-              padding: 1em;
-            }
-            h2 {
-              font-size: 2em;
-            }
             label > span {
               margin-right: 1em;
             }
