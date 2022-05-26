@@ -2,14 +2,14 @@
 /** @jsxFrag Fragment */
 import { Fragment, h, useMemo, useState } from "../client_deps.ts";
 import { createWrpChannel } from "../../wrp-ts/src/channel.ts";
-import useWrpParentSocket from "../wrp-example/useWrpParentSocket.ts";
+import useWrpIframeSocket from "../wrp-example/useWrpIframeSocket.ts";
 import useWrpServer from "../wrp-example/useWrpServer.ts";
 import { methodDescriptors } from "../wrp-example/generated/services/pbkit/wrp/example/WrpExampleService.ts";
 
-export default function WrpExampleHost() {
+export default function WrpIframeHost() {
   const [sliderValue, setSliderValue] = useState(50);
   const [text, setText] = useState("Hello World");
-  const { socket } = useWrpParentSocket();
+  const { iframeRef, socket } = useWrpIframeSocket();
   const channel = useMemo(() => socket && createWrpChannel(socket), [socket]);
   useWrpServer(channel, { sliderValue, text }, [
     [
@@ -18,8 +18,9 @@ export default function WrpExampleHost() {
         res.header({});
         const value = getState().sliderValue;
         res.send({ value });
-        const off = stateChanges.on("sliderValue", (value) =>
-          res.send({ value })
+        const off = stateChanges.on(
+          "sliderValue",
+          (value) => res.send({ value }),
         );
         req.metadata?.on("cancel-response", teardown);
         req.metadata?.on("close", teardown);
@@ -29,15 +30,12 @@ export default function WrpExampleHost() {
         }
       },
     ],
-    [
-      methodDescriptors.getTextValue,
-      ({ res, getState }) => {
-        const { text } = getState();
-        res.header({});
-        res.send({ text });
-        res.end({});
-      },
-    ],
+    [methodDescriptors.getTextValue, ({ res, getState }) => {
+      const { text } = getState();
+      res.header({});
+      res.send({ text });
+      res.end({});
+    }],
   ]);
   return (
     <>
@@ -61,6 +59,14 @@ export default function WrpExampleHost() {
             onInput={(e) => setText((e.target as any).value)}
           />
         </label>
+      </div>
+      <div>
+        <h2>iframe</h2>
+        <iframe
+          style={{ border: "1px solid black" }}
+          ref={iframeRef}
+          src="/wrp-example-guest"
+        />
       </div>
       <style
         dangerouslySetInnerHTML={{
