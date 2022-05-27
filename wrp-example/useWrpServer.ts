@@ -7,16 +7,16 @@ import {
   EventEmitter,
 } from "https://deno.land/x/pbkit@v0.0.45/core/runtime/async/event-emitter.ts";
 import { useEffect, useRef } from "../client_deps.ts";
-import { WrpChannel } from "https://deno.land/x/wrp@v0.0.2/channel.ts";
+import { WrpChannel } from "https://deno.land/x/wrp@v0.0.3/channel.ts";
 import {
   createWrpHost,
   WrpRequest,
-} from "https://deno.land/x/wrp@v0.0.2/host.ts";
-import { Metadata } from "https://deno.land/x/wrp@v0.0.2/metadata.ts";
+} from "https://deno.land/x/wrp@v0.0.3/host.ts";
+import { Metadata } from "https://deno.land/x/wrp@v0.0.3/metadata.ts";
 import {
   createWrpServer,
   createWrpServerImplBuilder,
-} from "https://deno.land/x/wrp@v0.0.2/rpc/server.ts";
+} from "https://deno.land/x/wrp@v0.0.3/rpc/server.ts";
 
 export type GetStateFn<TState> = () => TState;
 export type MethodImpl<TState extends Record<string, any>, TReq, TRes> = [
