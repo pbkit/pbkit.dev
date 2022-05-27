@@ -66,7 +66,6 @@ export default function WrpIframeHost() {
       <div>
         <h2>iframe</h2>
         <iframe
-          style={{ border: "1px solid black" }}
           ref={iframeRef}
           src="/wrp-example-guest"
         />
@@ -87,6 +86,12 @@ export default function WrpIframeHost() {
             }
             input[type=text] {
               border: 1px solid black;
+            }
+            iframe {
+              width: 30em;
+              height: 30em;
+              border: 1px solid black;
+              resize: both;
             }
           `,
         }}
