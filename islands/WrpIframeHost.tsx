@@ -2,8 +2,8 @@
 /** @jsxFrag Fragment */
 import { Fragment, h, useMemo, useState } from "../client_deps.ts";
 import { createWrpChannel } from "https://deno.land/x/wrp@v0.0.3/channel.ts";
-import useWrpIframeSocket from "../wrp-example/useWrpIframeSocket.ts";
-import useWrpServer from "../wrp-example/useWrpServer.ts";
+import useWrpIframeSocket from "https://deno.land/x/wrp@v0.0.3/react/useWrpIframeSocket.ts";
+import useWrpServer from "https://deno.land/x/wrp@v0.0.3/react/useWrpServer.ts";
 import { methodDescriptors } from "../wrp-example/generated/services/pbkit/wrp/example/WrpExampleService.ts";
 
 export default function WrpIframeHost() {
