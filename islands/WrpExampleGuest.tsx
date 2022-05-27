@@ -8,7 +8,7 @@ import {
   useMemo,
   useState,
 } from "../client_deps.ts";
-import { createWrpChannel } from "../wrp-ts/channel.ts";
+import { createWrpChannel } from "https://deno.land/x/wrp@v0.0.2/channel.ts";
 import useWrpParentSocket from "../wrp-example/useWrpParentSocket.ts";
 import useWrpClientImpl from "../wrp-example/useWrpClientImpl.ts";
 import {

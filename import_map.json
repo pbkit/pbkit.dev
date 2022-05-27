@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "react": "https://raw.githubusercontent.com/lucacasonato/fresh/80598d07fd4eed735ea7ee3eb9728d7f5c9b3aa4/runtime.ts"
+  }
+}

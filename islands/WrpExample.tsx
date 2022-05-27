@@ -12,8 +12,11 @@ import {
   useMemo,
   useState,
 } from "../client_deps.ts";
-import { createWrpChannel, WrpChannel } from "../wrp-ts/channel.ts";
-import { Type as WrpMessage } from "../wrp-ts/generated/messages/pbkit/wrp/WrpMessage.ts";
+import {
+  createWrpChannel,
+  WrpChannel,
+} from "https://deno.land/x/wrp@v0.0.2/channel.ts";
+import { Type as WrpMessage } from "https://deno.land/x/wrp@v0.0.2/generated/messages/pbkit/wrp/WrpMessage.ts";
 import useWrpParentSocket from "../wrp-example/useWrpParentSocket.ts";
 import useWrpServer from "../wrp-example/useWrpServer.ts";
 import {
