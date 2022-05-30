@@ -2,5 +2,6 @@
   "introduction": [],
   "getting-started": ["installation", "setup-pollapo"],
   "pb": [],
-  "pollapo": []
+  "pollapo": [],
+  "wrp": ["architecture", "swift"]
 }
