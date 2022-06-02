@@ -1,0 +1,21 @@
+name: Deploy pbkit.dev
+
+on:
+  push:
+    branches: [main]
+  
+jobs:
+  deploy:
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+
+      - name: Deploy to Deno Deploy
+        uses: denoland/deployctl@v1
+        with:
+          project: pbkit.dev
+          entrypoint: main.ts
+          import-map: import_map.json
