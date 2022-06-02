@@ -17,14 +17,14 @@ import {
   WrpChannel,
 } from "https://deno.land/x/wrp@v0.0.3/channel.ts";
 import { Type as WrpMessage } from "https://deno.land/x/wrp@v0.0.3/generated/messages/pbkit/wrp/WrpMessage.ts";
-import useWrpParentSocket from "../wrp-example/useWrpParentSocket.ts";
-import useWrpServer from "../wrp-example/useWrpServer.ts";
+import useWrpParentSocket from "https://deno.land/x/wrp@v0.0.3/react/useWrpParentSocket.ts";
+import useWrpServer from "https://deno.land/x/wrp@v0.0.3/react/useWrpServer.ts";
 import {
   createServiceClient,
   methodDescriptors,
   Service,
 } from "../wrp-example/generated/services/pbkit/wrp/example/WrpExampleService.ts";
-import useWrpClientImpl from "../wrp-example/useWrpClientImpl.ts";
+import useWrpClientImpl from "https://deno.land/x/wrp@v0.0.3/react/useWrpClientImpl.ts";
 
 export default function WrpExample() {
   const [sliderValue, setSliderValue] = useState(50);
@@ -35,11 +35,11 @@ export default function WrpExample() {
   const channel = useMemo(() => socket && createWrpChannel(socket), [socket]);
   const splitChannelResult = useMemo(
     () => channel && splitChannel(channel),
-    [channel],
+    [channel]
   );
   const wrpClientImpl = useWrpClientImpl(splitChannelResult?.guestChannel);
   const [serviceClient, setServiceClient] = useState<Service | undefined>(
-    undefined,
+    undefined
   );
   useEffect(() => {
     if (!wrpClientImpl) return;
@@ -67,9 +67,8 @@ export default function WrpExample() {
         res.header({});
         const value = getState().sliderValue;
         res.send({ value });
-        const off = stateChanges.on(
-          "sliderValue",
-          (value) => res.send({ value }),
+        const off = stateChanges.on("sliderValue", (value) =>
+          res.send({ value })
         );
         req.metadata?.on("cancel-response", teardown);
         req.metadata?.on("close", teardown);

@@ -9,8 +9,8 @@ import {
   useState,
 } from "../client_deps.ts";
 import { createWrpChannel } from "https://deno.land/x/wrp@v0.0.3/channel.ts";
-import useWrpParentSocket from "../wrp-example/useWrpParentSocket.ts";
-import useWrpClientImpl from "../wrp-example/useWrpClientImpl.ts";
+import useWrpParentSocket from "https://deno.land/x/wrp@v0.0.3/react/useWrpParentSocket.ts";
+import useWrpClientImpl from "https://deno.land/x/wrp@v0.0.3/react/useWrpClientImpl.ts";
 import {
   createServiceClient,
   Service,
@@ -78,7 +78,7 @@ function useWrpExampleServiceClient() {
   const channel = useMemo(() => socket && createWrpChannel(socket), [socket]);
   const wrpClientImpl = useWrpClientImpl(channel);
   const [serviceClient, setServiceClient] = useState<Service | undefined>(
-    undefined,
+    undefined
   );
   useEffect(() => {
     if (!wrpClientImpl) return;
