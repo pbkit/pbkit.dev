@@ -14,6 +14,7 @@ import useWrpServer from "https://deno.land/x/wrp@v0.0.3/react/useWrpServer.ts";
 import { methodDescriptors } from "../wrp-example/generated/services/pbkit/wrp/example/WrpExampleService.ts";
 
 export default function WrpIframeHost() {
+  const [isFold, setIsFold] = useState(true);
   const [sliderValue, setSliderValue] = useState(50);
   const [text, setText] = useState("Hello World");
   const { iframeRef, socket } = useWrpIframeSocket();
@@ -25,9 +26,8 @@ export default function WrpIframeHost() {
         res.header({});
         const value = getState().sliderValue;
         res.send({ value });
-        const off = stateChanges.on(
-          "sliderValue",
-          (value) => res.send({ value }),
+        const off = stateChanges.on("sliderValue", (value) =>
+          res.send({ value })
         );
         req.metadata?.on("cancel-response", teardown);
         req.metadata?.on("close", teardown);
@@ -74,6 +74,31 @@ export default function WrpIframeHost() {
           </a>{" "}
           here!
         </p>
+        <p class={tw`cursor-pointer`} onClick={() => setIsFold((v) => !v)}>
+          Show protobuf schema in this example {isFold ? "▼" : "▲"}
+        </p>
+        <code
+          class={tw`whitespace-pre-wrap p-4 bg-gray-100 text-left ${
+            isFold ? `hidden` : ""
+          }`}
+        >
+          {`syntax = "proto3";
+package pbkit.wrp.example;
+
+service WrpExampleService {
+  rpc GetTextValue(GetTextValueRequest) returns (GetTextValueResponse);
+  rpc GetSliderValue(GetSliderValueRequest) returns (stream GetSliderValueResponse);
+}
+
+message GetTextValueRequest {}
+message GetTextValueResponse {
+  string text = 1;
+}
+message GetSliderValueRequest {}
+message GetSliderValueResponse {
+  int32 value = 1;
+}`}
+        </code>
         <div class={tw`flex flex-col gap-4`}>
           <label class={styles.label("blue")}>
             <b>SliderValue</b>
