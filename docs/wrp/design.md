@@ -19,7 +19,9 @@ Whenever the channel sends a message, it writes the message size as a 4-byte
 little-endian integer to the socket, and then writes a message payload as that
 size.
 
-The message payload is defined in the [wrp-ts/wrp.proto](https://github.com/pbkit/wrp-ts/blob/main/src/wrp.proto) file.
+The message payload is defined in the
+[wrp-ts/wrp.proto](https://github.com/pbkit/wrp-ts/blob/main/src/wrp.proto)
+file.
 
 <img
   alt="wrp transport sequential diagram"

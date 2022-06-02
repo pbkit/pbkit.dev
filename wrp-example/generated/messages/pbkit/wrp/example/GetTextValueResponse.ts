@@ -1,6 +1,6 @@
 import {
-  tsValueToJsonValueFns,
   jsonValueToTsValueFns,
+  tsValueToJsonValueFns,
 } from "https:/deno.land/x/pbkit@v0.0.45/core/runtime/json/scalar.ts";
 import {
   WireMessage,
@@ -29,26 +29,38 @@ export function getDefaultValue(): $.pbkit.wrp.example.GetTextValueResponse {
   };
 }
 
-export function createValue(partialValue: Partial<$.pbkit.wrp.example.GetTextValueResponse>): $.pbkit.wrp.example.GetTextValueResponse {
+export function createValue(
+  partialValue: Partial<$.pbkit.wrp.example.GetTextValueResponse>,
+): $.pbkit.wrp.example.GetTextValueResponse {
   return {
     ...getDefaultValue(),
     ...partialValue,
   };
 }
 
-export function encodeJson(value: $.pbkit.wrp.example.GetTextValueResponse): unknown {
+export function encodeJson(
+  value: $.pbkit.wrp.example.GetTextValueResponse,
+): unknown {
   const result: any = {};
-  if (value.text !== undefined) result.text = tsValueToJsonValueFns.string(value.text);
+  if (value.text !== undefined) {
+    result.text = tsValueToJsonValueFns.string(value.text);
+  }
   return result;
 }
 
-export function decodeJson(value: any): $.pbkit.wrp.example.GetTextValueResponse {
+export function decodeJson(
+  value: any,
+): $.pbkit.wrp.example.GetTextValueResponse {
   const result = getDefaultValue();
-  if (value.text !== undefined) result.text = jsonValueToTsValueFns.string(value.text);
+  if (value.text !== undefined) {
+    result.text = jsonValueToTsValueFns.string(value.text);
+  }
   return result;
 }
 
-export function encodeBinary(value: $.pbkit.wrp.example.GetTextValueResponse): Uint8Array {
+export function encodeBinary(
+  value: $.pbkit.wrp.example.GetTextValueResponse,
+): Uint8Array {
   const result: WireMessage = [];
   if (value.text !== undefined) {
     const tsValue = value.text;
@@ -59,7 +71,9 @@ export function encodeBinary(value: $.pbkit.wrp.example.GetTextValueResponse): U
   return serialize(result);
 }
 
-export function decodeBinary(binary: Uint8Array): $.pbkit.wrp.example.GetTextValueResponse {
+export function decodeBinary(
+  binary: Uint8Array,
+): $.pbkit.wrp.example.GetTextValueResponse {
   const result = getDefaultValue();
   const wireMessage = deserialize(binary);
   const wireFields = new Map(wireMessage);

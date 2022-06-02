@@ -18,8 +18,9 @@ export default function WrpExampleHost() {
         res.header({});
         const value = getState().sliderValue;
         res.send({ value });
-        const off = stateChanges.on("sliderValue", (value) =>
-          res.send({ value })
+        const off = stateChanges.on(
+          "sliderValue",
+          (value) => res.send({ value }),
         );
         req.metadata?.on("cancel-response", teardown);
         req.metadata?.on("close", teardown);

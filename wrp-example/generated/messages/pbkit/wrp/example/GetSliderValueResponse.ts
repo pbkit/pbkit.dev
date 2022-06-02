@@ -1,6 +1,6 @@
 import {
-  tsValueToJsonValueFns,
   jsonValueToTsValueFns,
+  tsValueToJsonValueFns,
 } from "https:/deno.land/x/pbkit@v0.0.45/core/runtime/json/scalar.ts";
 import {
   WireMessage,
@@ -29,26 +29,38 @@ export function getDefaultValue(): $.pbkit.wrp.example.GetSliderValueResponse {
   };
 }
 
-export function createValue(partialValue: Partial<$.pbkit.wrp.example.GetSliderValueResponse>): $.pbkit.wrp.example.GetSliderValueResponse {
+export function createValue(
+  partialValue: Partial<$.pbkit.wrp.example.GetSliderValueResponse>,
+): $.pbkit.wrp.example.GetSliderValueResponse {
   return {
     ...getDefaultValue(),
     ...partialValue,
   };
 }
 
-export function encodeJson(value: $.pbkit.wrp.example.GetSliderValueResponse): unknown {
+export function encodeJson(
+  value: $.pbkit.wrp.example.GetSliderValueResponse,
+): unknown {
   const result: any = {};
-  if (value.value !== undefined) result.value = tsValueToJsonValueFns.int32(value.value);
+  if (value.value !== undefined) {
+    result.value = tsValueToJsonValueFns.int32(value.value);
+  }
   return result;
 }
 
-export function decodeJson(value: any): $.pbkit.wrp.example.GetSliderValueResponse {
+export function decodeJson(
+  value: any,
+): $.pbkit.wrp.example.GetSliderValueResponse {
   const result = getDefaultValue();
-  if (value.value !== undefined) result.value = jsonValueToTsValueFns.int32(value.value);
+  if (value.value !== undefined) {
+    result.value = jsonValueToTsValueFns.int32(value.value);
+  }
   return result;
 }
 
-export function encodeBinary(value: $.pbkit.wrp.example.GetSliderValueResponse): Uint8Array {
+export function encodeBinary(
+  value: $.pbkit.wrp.example.GetSliderValueResponse,
+): Uint8Array {
   const result: WireMessage = [];
   if (value.value !== undefined) {
     const tsValue = value.value;
@@ -59,7 +71,9 @@ export function encodeBinary(value: $.pbkit.wrp.example.GetSliderValueResponse):
   return serialize(result);
 }
 
-export function decodeBinary(binary: Uint8Array): $.pbkit.wrp.example.GetSliderValueResponse {
+export function decodeBinary(
+  binary: Uint8Array,
+): $.pbkit.wrp.example.GetSliderValueResponse {
   const result = getDefaultValue();
   const wireMessage = deserialize(binary);
   const wireFields = new Map(wireMessage);
