@@ -1,6 +1,7 @@
 {
   "tasks": {
-    "dev": "deno run --watch --no-check --import-map=import_map.json -A main.ts",
+    "dev": "deno run --watch --no-check -A main.ts",
     "manifest": "fresh manifest"
-  }
+  },
+  "importMap": "import_map.json"
 }
