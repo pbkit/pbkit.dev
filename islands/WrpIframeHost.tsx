@@ -1,6 +1,13 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
-import { Fragment, h, useMemo, useState } from "../client_deps.ts";
+import {
+  Fragment,
+  h,
+  tw,
+  useEffect,
+  useMemo,
+  useState,
+} from "../client_deps.ts";
 import { createWrpChannel } from "https://deno.land/x/wrp@v0.0.3/channel.ts";
 import useWrpIframeSocket from "https://deno.land/x/wrp@v0.0.3/react/useWrpIframeSocket.ts";
 import useWrpServer from "https://deno.land/x/wrp@v0.0.3/react/useWrpServer.ts";
@@ -39,44 +46,63 @@ export default function WrpIframeHost() {
       },
     ],
   ]);
+  useEffect(() => {
+    // @ts-ignore
+    // hooking code for getting event from iframe's devtools
+    window["@pbkit/devtools"] = window.frames[0]["@pbkit/devtools"];
+  }, []);
+  const styles = {
+    main: tw`flex flex-col items-center gap-4 p-4 text-center`,
+    button: (color: string) =>
+      tw`w-full bg-${color}-400 hover:bg-${color}-500 text-white font-bold py-2 px-4 rounded`,
+    label: (color: string) =>
+      tw`flex items-center rounded bg-${color}-100 p-4 gap-4`,
+  };
   return (
     <>
-      <div>
-        <h2>host inputs</h2>
-        <label>
-          <span>slider</span>
-          <input
-            type="range"
-            value={sliderValue}
-            min="0"
-            max="100"
-            onInput={(e) => setSliderValue(+(e.target as any).value)}
-          />
-        </label>
-        <label>
-          <span>text</span>
-          <input
-            type="text"
-            value={text}
-            onInput={(e) => setText((e.target as any).value)}
-          />
-        </label>
-      </div>
-      <div>
-        <h2>iframe</h2>
-        <iframe ref={iframeRef} src="/wrp-example-guest" />
+      <div class={styles.main}>
+        <h1 class={tw`text-2xl font-bold`}>WrpExampleServer (Host)</h1>
+        <p>
+          You can use pbkit{" "}
+          <a
+            class={tw`text-blue-500 font-bold`}
+            href="https://chrome.google.com/webstore/detail/pbkit-devtools/fjacmiijeihblfhobghceofniolonhca"
+            target="_blank"
+          >
+            chrome devtools
+          </a>{" "}
+          here!
+        </p>
+        <div class={tw`flex flex-col gap-4`}>
+          <label class={styles.label("blue")}>
+            <b>SliderValue</b>
+            <input
+              type="range"
+              class={tw`w-full`}
+              value={sliderValue}
+              min="0"
+              max="100"
+              onInput={(e) => setSliderValue(+(e.target as any).value)}
+            />
+          </label>
+          <label class={styles.label("green")}>
+            <b>TextValue</b>
+            <input
+              type="text"
+              class={tw`p-1`}
+              value={text}
+              onInput={(e) => setText((e.target as any).value)}
+            />
+          </label>
+        </div>
+        <div>
+          <h2 class={tw`text-2xl font-bold my-4`}>iframe</h2>
+          <iframe ref={iframeRef} src="/wrp-example-guest" />
+        </div>
       </div>
       <style
         dangerouslySetInnerHTML={{
           __html: `
-            div {
-              display: flex;
-              flex-direction: column;
-              padding: 1em;
-            }
-            h2 {
-              font-size: 2em;
-            }
             label > span {
               margin-right: 1em;
             }
@@ -84,8 +110,8 @@ export default function WrpIframeHost() {
               border: 1px solid black;
             }
             iframe {
-              width: 30em;
-              height: 30em;
+              width: 500px;
+              height: 400px;
               border: 1px solid black;
               resize: both;
             }

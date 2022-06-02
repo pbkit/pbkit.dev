@@ -82,7 +82,7 @@ function useWrpExampleServiceClient() {
   );
   useEffect(() => {
     if (!wrpClientImpl) return;
-    setServiceClient(createServiceClient(wrpClientImpl));
+    setServiceClient(createServiceClient(wrpClientImpl, { devtools: true }));
   }, [wrpClientImpl]);
   return serviceClient;
 }
