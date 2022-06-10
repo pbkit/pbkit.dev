@@ -15,16 +15,16 @@ import {
 import {
   createWrpChannel,
   WrpChannel,
-} from "https://deno.land/x/wrp@v0.0.3/channel.ts";
-import { Type as WrpMessage } from "https://deno.land/x/wrp@v0.0.3/generated/messages/pbkit/wrp/WrpMessage.ts";
-import useWrpParentSocket from "https://deno.land/x/wrp@v0.0.3/react/useWrpParentSocket.ts";
-import useWrpServer from "https://deno.land/x/wrp@v0.0.3/react/useWrpServer.ts";
+} from "https://deno.land/x/wrp@v0.0.5/channel.ts";
+import { Type as WrpMessage } from "https://deno.land/x/wrp@v0.0.5/generated/messages/pbkit/wrp/WrpMessage.ts";
+import useWrpParentSocket from "https://deno.land/x/wrp@v0.0.5/react/useWrpParentSocket.ts";
+import useWrpServer from "https://deno.land/x/wrp@v0.0.5/react/useWrpServer.ts";
 import {
   createServiceClient,
   methodDescriptors,
   Service,
 } from "../wrp-example/generated/services/pbkit/wrp/example/WrpExampleService.ts";
-import useWrpClientImpl from "https://deno.land/x/wrp@v0.0.3/react/useWrpClientImpl.ts";
+import useWrpClientImpl from "https://deno.land/x/wrp@v0.0.5/react/useWrpClientImpl.ts";
 
 export default function WrpExample() {
   const [sliderValue, setSliderValue] = useState(50);
