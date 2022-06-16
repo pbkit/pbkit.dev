@@ -52,8 +52,9 @@ function Intro() {
         protocol buffers.
       </p>
       <div class={tw`grid sm:grid-cols-2 gap-4`}>
-        <div
-          class={tw`bg(white) shadow-lg p-4 rounded-md relative overflow-hidden`}
+        <a
+          href="/docs/introduction"
+          class={tw`bg(white) shadow-lg hover:shadow-2xl active:shadow-xl transition-shadow p-4 rounded-md relative overflow-hidden`}
         >
           <h1 class={tw`text(2xl) font-bold`}>pb - Protobuf compiler</h1>
           <p class={tw`mt-4`}>
@@ -63,9 +64,10 @@ function Intro() {
           <span class={tw`absolute text(9xl) -bottom-4 right-2 opacity-20`}>
             🤖
           </span>
-        </div>
-        <div
-          class={tw`bg(white) shadow-lg p-4 rounded-md relative overflow-hidden`}
+        </a>
+        <a
+          href="/docs/introduction"
+          class={tw`bg(white) shadow-lg hover:shadow-2xl active:shadow-xl transition-shadow p-4 rounded-md relative overflow-hidden`}
         >
           <h1 class={tw`text(2xl) font-bold`}>pollapo - Package manager</h1>
           <p class={tw`mt-4`}>
@@ -75,9 +77,10 @@ function Intro() {
           <span class={tw`absolute text(9xl) -bottom-4 right-2 opacity-20`}>
             📦
           </span>
-        </div>
-        <div
-          class={tw`bg(white) shadow-lg p-4 rounded-md relative overflow-hidden`}
+        </a>
+        <a
+          href="/docs/wrp"
+          class={tw`bg(white) shadow-lg hover:shadow-2xl active:shadow-xl transition-shadow p-4 rounded-md relative overflow-hidden`}
         >
           <h1 class={tw`text(2xl) font-bold`}>
             wrp - RPC protocol for WebView
@@ -89,9 +92,11 @@ function Intro() {
           <span class={tw`absolute text(9xl) -bottom-4 right-2 opacity-20`}>
             🌯
           </span>
-        </div>
-        <div
-          class={tw`bg(white) shadow-lg p-4 rounded-md relative overflow-hidden`}
+        </a>
+        <a
+          target="_blank"
+          href="https://marketplace.visualstudio.com/items?itemName=pbkit.vscode-pbkit"
+          class={tw`bg(white) shadow-lg hover:shadow-2xl active:shadow-xl transition-shadow p-4 rounded-md relative overflow-hidden`}
         >
           <h1 class={tw`text(2xl) font-bold`}>Editor extension</h1>
           <h2 class={tw`text(lg)`}>VSCode extension with language server</h2>
@@ -101,9 +106,11 @@ function Intro() {
           <span class={tw`absolute text(9xl) -bottom-4 right-2 opacity-20`}>
             📝
           </span>
-        </div>
-        <div
-          class={tw`bg(white) shadow-lg p-4 rounded-md  relative overflow-hidden`}
+        </a>
+        <a
+          target="_blank"
+          href="https://chrome.google.com/webstore/detail/pbkit-devtools/fjacmiijeihblfhobghceofniolonhca"
+          class={tw`bg(white) shadow-lg hover:shadow-2xl active:shadow-xl transition-shadow p-4 rounded-md  relative overflow-hidden`}
         >
           <h1 class={tw`text(2xl) font-bold`}>Chrome DevTools</h1>
           <h2 class={tw`text(lg)`}>Chrome DevTools for pbkit</h2>
@@ -113,7 +120,7 @@ function Intro() {
           <span class={tw`absolute text(9xl) -bottom-4 right-2 opacity-20`}>
             🌏
           </span>
-        </div>
+        </a>
         <div
           class={tw`text(xl) flex items-center justify-center font-semibold`}
         >
