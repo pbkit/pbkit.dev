@@ -20,15 +20,13 @@ export default function Navbar({ active }: NavbarProps) {
   ];
 
   return (
-    <nav
-      class={tw`bg(gray-50) py-2 border(t-2 b-2 gray-100)`}
-    >
+    <nav class={tw`bg(gray-50) py-2 border(t-2 b-2 gray-100)`}>
       <div
         class={tw`flex items-center justify-between max-w-screen-lg mx-auto`}
       >
-        <a class={tw`flex items-center gap-2 mx-4`} href="/">
+        <a class={tw`flex items-center gap-2 mx-4 tracking-tight`} href="/">
           <img src="/pbkit.svg" width="32" />
-          <b>pbkit</b>
+          {/* <b>pbkit</b> */}
         </a>
         <ul class={tw`flex justify-end gap-8 mx-4`}>
           {items.map((item) => (

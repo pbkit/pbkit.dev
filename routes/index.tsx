@@ -12,35 +12,31 @@ export default function MainPage() {
         <title>pbkit</title>
         <meta
           name="description"
-          content="Protobuf toolkit written in Deno/TypeScript"
+          content="Protobuf toolkit for modern Web development"
         />
       </Head>
       <NavigationBar active="/" />
-      <Hero />
-      <Intro />
-      <GettingStarted />
-      <Example />
+      <div class={tw`bg(gray-50)`}>
+        <Hero />
+        <Intro />
+        <GettingStarted />
+        <Example />
+      </div>
       <Footer />
     </>
   );
 }
 
 function Hero() {
-  const container = tw`w-full px-4 h-64 flex justify-center items-center flex`;
-  const title = tw
-    `text(4xl sm:5xl lg:6xl gray-900) sm:tracking-tight font-extrabold`;
-  const subtitle = tw`mt-4 text(2xl gray-800)`;
+  const container = tw`max-w-screen-lg mx-auto w-full h(48 sm:64) flex items-center tracking-tight`;
+  const title = tw`text(4xl sm:5xl lg:6xl gray-900) font-extrabold`;
+  const subtitle = tw`mt-4 text(xl sm:2xl gray-800) `;
 
   return (
     <section class={container}>
-      <img src="/pbkit.svg" width="100" class={tw`my-8`} />
       <div class={tw`ml(4 md:8)`}>
-        <h1 class={title}>
-          pbkit
-        </h1>
-        <p class={subtitle}>
-          Protobuf toolkit written in Deno/TypeScript
-        </p>
+        <h1 class={title}>pbkit</h1>
+        <p class={subtitle}>Protobuf toolkit for modern web development</p>
       </div>
     </section>
   );
@@ -49,29 +45,81 @@ function Hero() {
 function Intro() {
   return (
     <section
-      class={tw`max-w-screen-sm mx-auto mb-16 px(4 sm:6 md:8) space-y-4`}
+      class={tw`max-w-screen-lg mx-auto mb-16 px(4 sm:6 md:8) space-y-4 tracking-tight`}
     >
-      <p class={tw`text-gray-800`}>
-        <b>pbkit</b>{" "}
-        is a collection of tools related to protobuf. It is written in
-        TypeScript and uses the Deno API. And It can be executed in any
-        JavaScript environment (including Node.js or web browser). Some stand
-        out features:
+      <p class={tw`text(xl gray-800)`}>
+        <b>pbkit</b> is a collection of tools for modern web development with
+        protocol buffers.
       </p>
-      <ul class={tw`text-gray-800 list-disc list-inside pl-4`}>
-        <li>
-          <b>Package manager</b> for protocol buffers, pollapo.
-        </li>
-        <li>
-          <b>Protobuf schema compiler</b> like protoc, pb.
-        </li>
-        <li>
-          <b>Chrome DevTools</b>: pbkit-devtools.
-        </li>
-        <li>
-          <b>VSCode extension with protobuf language server</b>: vscode-pbkit.
-        </li>
-      </ul>
+      <div class={tw`grid sm:grid-cols-2 gap-4`}>
+        <div
+          class={tw`bg(white) shadow-lg p-4 rounded-md relative overflow-hidden`}
+        >
+          <h1 class={tw`text(2xl) font-bold`}>pb - Protobuf compiler</h1>
+          <p class={tw`mt-4`}>
+            No native binary dependencies, written in pure TypeScript. Available
+            in Node.js and even in a web browser.
+          </p>
+          <span class={tw`absolute text(9xl) -bottom-4 right-2 opacity-20`}>
+            🤖
+          </span>
+        </div>
+        <div
+          class={tw`bg(white) shadow-lg p-4 rounded-md relative overflow-hidden`}
+        >
+          <h1 class={tw`text(2xl) font-bold`}>pollapo - Package manager</h1>
+          <p class={tw`mt-4`}>
+            You can use a GitHub repository containing your .proto files as a
+            single pollapo package.
+          </p>
+          <span class={tw`absolute text(9xl) -bottom-4 right-2 opacity-20`}>
+            📦
+          </span>
+        </div>
+        <div
+          class={tw`bg(white) shadow-lg p-4 rounded-md relative overflow-hidden`}
+        >
+          <h1 class={tw`text(2xl) font-bold`}>
+            wrp - RPC protocol for WebView
+          </h1>
+          <h2 class={tw`text(lg)`}>Webview/worker Request Protocol</h2>
+          <p class={tw`mt-4`}>
+            Compatible with any rpc client you use with pbkit.
+          </p>
+          <span class={tw`absolute text(9xl) -bottom-4 right-2 opacity-20`}>
+            🌯
+          </span>
+        </div>
+        <div
+          class={tw`bg(white) shadow-lg p-4 rounded-md relative overflow-hidden`}
+        >
+          <h1 class={tw`text(2xl) font-bold`}>Editor extension</h1>
+          <h2 class={tw`text(lg)`}>VSCode extension with language server</h2>
+          <p class={tw`mt-4`}>
+            Syntax highlight, Goto definition, Find references and more.
+          </p>
+          <span class={tw`absolute text(9xl) -bottom-4 right-2 opacity-20`}>
+            📝
+          </span>
+        </div>
+        <div
+          class={tw`bg(white) shadow-lg p-4 rounded-md  relative overflow-hidden`}
+        >
+          <h1 class={tw`text(2xl) font-bold`}>Chrome DevTools</h1>
+          <h2 class={tw`text(lg)`}>Chrome DevTools for pbkit</h2>
+          <p class={tw`mt-4`}>
+            Compatible with any rpc client you use with pbkit.
+          </p>
+          <span class={tw`absolute text(9xl) -bottom-4 right-2 opacity-20`}>
+            🌏
+          </span>
+        </div>
+        <div
+          class={tw`text(xl) flex items-center justify-center font-semibold`}
+        >
+          And more... 🚀
+        </div>
+      </div>
     </section>
   );
 }
@@ -79,7 +127,7 @@ function Intro() {
 function GettingStarted() {
   return (
     <section
-      class={tw`max-w-screen-sm mx-auto my-16 px(4 sm:6 md:8) space-y-4`}
+      class={tw`max-w-screen-lg mx-auto my-16 px(4 sm:6 md:8) space-y-4`}
     >
       <h2 id="getting-started" class={tw`text(xl gray-800) font-bold`}>
         <a href="#getting-started" class={tw`hover:underline`}>
@@ -110,12 +158,13 @@ function GettingStarted() {
         Now you can generate en/decode typescript code from your protobuf
         schema.
       </p>
-      <pre class={tw`overflow-x-auto py-2 px-4 bg(gray-100)`}>
-        pb gen ts
-      </pre>
+      <pre class={tw`overflow-x-auto py-2 px-4 bg(gray-100)`}>pb gen ts</pre>
       <p class={tw`text-gray-800`}>
         A more in-depth getting started guide is available in{" "}
-        <a href="/docs" class={tw`text-blue-600 hover:underline`}>the docs</a>.
+        <a href="/docs" class={tw`text-blue-600 hover:underline`}>
+          the docs
+        </a>
+        .
       </p>
     </section>
   );
@@ -125,7 +174,7 @@ function Example() {
   return (
     <>
       <section
-        class={tw`max-w-screen-sm mx-auto my-16 px(4 sm:6 md:8) space-y-4`}
+        class={tw`max-w-screen-lg mx-auto my-16 px(4 sm:6 md:8) space-y-4`}
       >
         <h2 id="getting-started" class={tw`text(xl gray-800) font-bold`}>
           <a href="#getting-started" class={tw`hover:underline`}>
@@ -139,7 +188,7 @@ function Example() {
         </p>
       </section>
       <section
-        class={tw`max-w-screen-sm mx-auto my-16 px(4 sm:6 md:8) space-y-4`}
+        class={tw`max-w-screen-lg mx-auto my-16 px(4 sm:6 md:8) space-y-4`}
       >
         <h2 id="example" class={tw`text(xl gray-800) font-bold`}>
           <a href="#example" class={tw`hover:underline`}>
@@ -152,7 +201,7 @@ function Example() {
         </p>
       </section>
       <section
-        class={tw`max-w-screen-sm mx-auto my-16 px(4 sm:6 md:8) space-y-4`}
+        class={tw`max-w-screen-lg mx-auto my-16 px(4 sm:6 md:8) space-y-4`}
       >
         <h2 id="example" class={tw`text(xl gray-800) font-bold`}>
           <a href="#example" class={tw`hover:underline`}>
@@ -163,6 +212,7 @@ function Example() {
           The pbkit docs is also written in Deno and deployed with Deno deploy.
         </p>
       </section>
+      <div class={tw`h-1`} />
     </>
   );
 }
