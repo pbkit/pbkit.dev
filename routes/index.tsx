@@ -87,7 +87,8 @@ function Intro() {
           </h1>
           <h2 class={tw`text(lg)`}>Webview/worker Request Protocol</h2>
           <p class={tw`mt-4`}>
-            Compatible with any rpc client you use with pbkit.
+            Transport messages between Native and WebView using your protobuf
+            schema! Supports TypeScript(Web), Kotlin(Android), Swift(iOS).
           </p>
           <span class={tw`absolute text(9xl) -bottom-4 right-2 opacity-20`}>
             🌯
