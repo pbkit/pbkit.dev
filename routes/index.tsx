@@ -28,7 +28,8 @@ export default function MainPage() {
 }
 
 function Hero() {
-  const container = tw`max-w-screen-lg mx-auto w-full h(48 sm:64) flex items-center tracking-tight`;
+  const container = tw
+    `max-w-screen-lg mx-auto w-full h(48 sm:64) flex items-center tracking-tight`;
   const title = tw`text(4xl sm:5xl lg:6xl gray-900) font-extrabold`;
   const subtitle = tw`mt-4 text(xl sm:2xl gray-800) `;
 
@@ -45,16 +46,19 @@ function Hero() {
 function Intro() {
   return (
     <section
-      class={tw`max-w-screen-lg mx-auto mb-16 px(4 sm:6 md:8) space-y-4 tracking-tight`}
+      class={tw
+        `max-w-screen-lg mx-auto mb-16 px(4 sm:6 md:8) space-y-4 tracking-tight`}
     >
       <p class={tw`text(xl gray-800)`}>
-        <b>pbkit</b> is a collection of tools for modern web development with
-        protocol buffers.
+        <b>pbkit</b>{" "}
+        is a collection of tools for modern web development with protocol
+        buffers.
       </p>
       <div class={tw`grid sm:grid-cols-2 gap-4`}>
         <a
           href="/docs/introduction"
-          class={tw`bg(white) shadow-lg hover:shadow-2xl active:shadow-xl transition-shadow p-4 rounded-md relative overflow-hidden`}
+          class={tw
+            `bg(white) shadow-lg hover:shadow-2xl active:shadow-xl transition-shadow p-4 rounded-md relative overflow-hidden`}
         >
           <h1 class={tw`text(2xl) font-bold`}>pb - Protobuf compiler</h1>
           <p class={tw`mt-4`}>
@@ -67,7 +71,8 @@ function Intro() {
         </a>
         <a
           href="/docs/introduction"
-          class={tw`bg(white) shadow-lg hover:shadow-2xl active:shadow-xl transition-shadow p-4 rounded-md relative overflow-hidden`}
+          class={tw
+            `bg(white) shadow-lg hover:shadow-2xl active:shadow-xl transition-shadow p-4 rounded-md relative overflow-hidden`}
         >
           <h1 class={tw`text(2xl) font-bold`}>pollapo - Package manager</h1>
           <p class={tw`mt-4`}>
@@ -80,7 +85,8 @@ function Intro() {
         </a>
         <a
           href="/docs/wrp"
-          class={tw`bg(white) shadow-lg hover:shadow-2xl active:shadow-xl transition-shadow p-4 rounded-md relative overflow-hidden`}
+          class={tw
+            `bg(white) shadow-lg hover:shadow-2xl active:shadow-xl transition-shadow p-4 rounded-md relative overflow-hidden`}
         >
           <h1 class={tw`text(2xl) font-bold`}>
             wrp - RPC protocol for WebView
@@ -97,7 +103,8 @@ function Intro() {
         <a
           target="_blank"
           href="https://marketplace.visualstudio.com/items?itemName=pbkit.vscode-pbkit"
-          class={tw`bg(white) shadow-lg hover:shadow-2xl active:shadow-xl transition-shadow p-4 rounded-md relative overflow-hidden`}
+          class={tw
+            `bg(white) shadow-lg hover:shadow-2xl active:shadow-xl transition-shadow p-4 rounded-md relative overflow-hidden`}
         >
           <h1 class={tw`text(2xl) font-bold`}>Editor extension</h1>
           <h2 class={tw`text(lg)`}>VSCode extension with language server</h2>
@@ -111,7 +118,8 @@ function Intro() {
         <a
           target="_blank"
           href="https://chrome.google.com/webstore/detail/pbkit-devtools/fjacmiijeihblfhobghceofniolonhca"
-          class={tw`bg(white) shadow-lg hover:shadow-2xl active:shadow-xl transition-shadow p-4 rounded-md  relative overflow-hidden`}
+          class={tw
+            `bg(white) shadow-lg hover:shadow-2xl active:shadow-xl transition-shadow p-4 rounded-md  relative overflow-hidden`}
         >
           <h1 class={tw`text(2xl) font-bold`}>Chrome DevTools</h1>
           <h2 class={tw`text(lg)`}>Chrome DevTools for pbkit</h2>

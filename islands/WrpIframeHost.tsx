@@ -26,9 +26,8 @@ export default function WrpIframeHost() {
         res.header({});
         const value = getState().sliderValue;
         res.send({ value });
-        const off = stateChanges.on(
-          "sliderValue",
-          (value) => res.send({ value }),
+        const off = stateChanges.on("sliderValue", (value) =>
+          res.send({ value })
         );
         req.metadata?.on("cancel-response", teardown);
         req.metadata?.on("close", teardown);
@@ -83,22 +82,7 @@ export default function WrpIframeHost() {
             isFold ? `hidden` : ""
           }`}
         >
-          {`syntax = "proto3";
-package pbkit.wrp.example;
-
-service WrpExampleService {
-  rpc GetTextValue(GetTextValueRequest) returns (GetTextValueResponse);
-  rpc GetSliderValue(GetSliderValueRequest) returns (stream GetSliderValueResponse);
-}
-
-message GetTextValueRequest {}
-message GetTextValueResponse {
-  string text = 1;
-}
-message GetSliderValueRequest {}
-message GetSliderValueResponse {
-  int32 value = 1;
-}`}
+          {proto}
         </code>
         <div class={tw`flex flex-col gap-4`}>
           <label class={styles.label("blue")}>
@@ -148,3 +132,20 @@ message GetSliderValueResponse {
     </>
   );
 }
+
+const proto = `syntax = "proto3";
+package pbkit.wrp.example;
+
+service WrpExampleService {
+  rpc GetTextValue(GetTextValueRequest) returns (GetTextValueResponse);
+  rpc GetSliderValue(GetSliderValueRequest) returns (stream GetSliderValueResponse);
+}
+
+message GetTextValueRequest {}
+message GetTextValueResponse {
+  string text = 1;
+}
+message GetSliderValueRequest {}
+message GetSliderValueResponse {
+  int32 value = 1;
+}`;

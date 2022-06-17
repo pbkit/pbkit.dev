@@ -78,11 +78,13 @@ function useWrpExampleServiceClient() {
   const channel = useMemo(() => socket && createWrpChannel(socket), [socket]);
   const wrpClientImpl = useWrpClientImpl(channel);
   const [serviceClient, setServiceClient] = useState<Service | undefined>(
-    undefined,
+    undefined
   );
   useEffect(() => {
     if (!wrpClientImpl) return;
-    setServiceClient(createServiceClient(wrpClientImpl, { devtools: true }));
+    setServiceClient(
+      createServiceClient(wrpClientImpl, { devtools: { tags: ["WrpClient"] } })
+    );
   }, [wrpClientImpl]);
   return serviceClient;
 }
