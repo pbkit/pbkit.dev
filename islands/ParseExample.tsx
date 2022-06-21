@@ -25,7 +25,7 @@ export default function ParseExample() {
     });
     const proto = await resp.json();
     setOutput(proto);
-  }, []);
+  }, [input]);
   useEffect(() => {
     getPbkitAst();
   }, []);
