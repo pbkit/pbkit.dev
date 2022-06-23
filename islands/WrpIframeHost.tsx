@@ -47,11 +47,6 @@ export default function WrpIframeHost() {
       },
     ],
   ]);
-  useEffect(() => {
-    // @ts-ignore
-    // hooking code for getting event from iframe's devtools
-    window["@pbkit/devtools"] = window.frames[0]["@pbkit/devtools"];
-  }, []);
   const styles = {
     main: tw`flex flex-col items-center gap-4 p-4 text-center`,
     button: (color: string) =>
