@@ -1,5 +1,5 @@
 /** @jsx h */
-import { h } from "../client_deps.ts";
+import { h } from "preact";
 import WrpIframeHost from "../islands/WrpIframeHost.tsx";
 
 export default function Page() {

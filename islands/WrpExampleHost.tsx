@@ -1,6 +1,7 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
-import { Fragment, h, tw, useMemo, useState } from "../client_deps.ts";
+import { Fragment, h, useMemo, useState } from "preact";
+import { tw } from "@twind";
 import { createWrpChannel } from "https://deno.land/x/wrp@v0.0.5/channel.ts";
 import useWrpParentSocket from "https://deno.land/x/wrp@v0.0.5/react/useWrpParentSocket.ts";
 import useWrpServer from "https://deno.land/x/wrp@v0.0.5/react/useWrpServer.ts";

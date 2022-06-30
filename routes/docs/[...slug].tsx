@@ -1,8 +1,11 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
 
-import { apply, Fragment, h, Head, PageProps, tw } from "../../client_deps.ts";
-import { gfm, Handlers } from "../../server_deps.ts";
+import { Fragment, h } from "preact";
+import { Head } from "$fresh/runtime.ts";
+import { Handlers, PageProps } from "$fresh/server.ts";
+import { apply, tw } from "@twind";
+import { gfm } from "@markdown";
 import DocsSidebar from "../../components/DocsSidebar.tsx";
 import Footer from "../../components/Footer.tsx";
 import NavigationBar from "../../components/Navbar.tsx";

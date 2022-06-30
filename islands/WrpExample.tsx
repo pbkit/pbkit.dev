@@ -1,17 +1,11 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
+import { Fragment, h, useEffect, useMemo, useState } from "preact";
+import { tw } from "@twind";
 import {
   createEventBuffer,
   EventBuffer,
 } from "https://deno.land/x/pbkit@v0.0.45/core/runtime/async/event-buffer.ts";
-import {
-  Fragment,
-  h,
-  tw,
-  useEffect,
-  useMemo,
-  useState,
-} from "../client_deps.ts";
 import {
   createWrpChannel,
   WrpChannel,

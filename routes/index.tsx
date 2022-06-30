@@ -1,7 +1,9 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
 
-import { Fragment, h, Head, tw } from "../client_deps.ts";
+import { Fragment, h } from "preact";
+import { Head } from "$fresh/runtime.ts";
+import { tw } from "@twind";
 import NavigationBar from "../components/Navbar.tsx";
 import Footer from "../components/Footer.tsx";
 

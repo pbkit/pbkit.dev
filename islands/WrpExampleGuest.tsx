@@ -1,13 +1,7 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
-import {
-  Fragment,
-  h,
-  tw,
-  useEffect,
-  useMemo,
-  useState,
-} from "../client_deps.ts";
+import { Fragment, h, useEffect, useMemo, useState } from "preact";
+import { tw } from "@twind";
 import { createWrpChannel } from "https://deno.land/x/wrp@v0.0.5/channel.ts";
 import useWrpParentSocket from "https://deno.land/x/wrp@v0.0.5/react/useWrpParentSocket.ts";
 import useWrpClientImpl from "https://deno.land/x/wrp@v0.0.5/react/useWrpClientImpl.ts";
@@ -78,12 +72,12 @@ function useWrpExampleServiceClient() {
   const channel = useMemo(() => socket && createWrpChannel(socket), [socket]);
   const wrpClientImpl = useWrpClientImpl(channel);
   const [serviceClient, setServiceClient] = useState<Service | undefined>(
-    undefined
+    undefined,
   );
   useEffect(() => {
     if (!wrpClientImpl) return;
     setServiceClient(
-      createServiceClient(wrpClientImpl, { devtools: { tags: ["WrpClient"] } })
+      createServiceClient(wrpClientImpl, { devtools: { tags: ["WrpClient"] } }),
     );
   }, [wrpClientImpl]);
   return serviceClient;
