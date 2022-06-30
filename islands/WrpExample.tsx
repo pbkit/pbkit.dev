@@ -29,11 +29,11 @@ export default function WrpExample() {
   const channel = useMemo(() => socket && createWrpChannel(socket), [socket]);
   const splitChannelResult = useMemo(
     () => channel && splitChannel(channel),
-    [channel]
+    [channel],
   );
   const wrpClientImpl = useWrpClientImpl(splitChannelResult?.guestChannel);
   const [serviceClient, setServiceClient] = useState<Service | undefined>(
-    undefined
+    undefined,
   );
   useEffect(() => {
     if (!wrpClientImpl) return;
@@ -61,8 +61,9 @@ export default function WrpExample() {
         res.header({});
         const value = getState().sliderValue;
         res.send({ value });
-        const off = stateChanges.on("sliderValue", (value) =>
-          res.send({ value })
+        const off = stateChanges.on(
+          "sliderValue",
+          (value) => res.send({ value }),
         );
         req.metadata?.on("cancel-response", teardown);
         req.metadata?.on("close", teardown);

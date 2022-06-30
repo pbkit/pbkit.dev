@@ -4,7 +4,7 @@
 import { Fragment, h } from "preact";
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { tw, apply } from "@twind";
+import { apply, tw } from "@twind";
 import { gfm } from "@markdown";
 import DocsSidebar from "../../components/DocsSidebar.tsx";
 import Footer from "../../components/Footer.tsx";
@@ -79,7 +79,8 @@ function Main(props: { path: string; page: Page }) {
 function MobileSidebarIcon() {
   return (
     <div
-      class={tw`md:hidden w-min ml-auto p-2 mt-4 rounded-full sticky top-4 right-0 bg-gray-100`}
+      class={tw
+        `md:hidden w-min ml-auto p-2 mt-4 rounded-full sticky top-4 right-0 bg-gray-100`}
     >
       <label for="docs_sidebar">
         <svg
@@ -93,7 +94,8 @@ function MobileSidebarIcon() {
             strokeLinejoin="round"
             strokeWidth="2"
             d="M4 6h16M4 12h16M4 18h7"
-          ></path>
+          >
+          </path>
         </svg>
       </label>
     </div>
@@ -103,7 +105,8 @@ function MobileSidebarIcon() {
 function MobileSidebar(props: { path: string }) {
   const container = tw`fixed inset-0 flex z-40 hidden` + " toggled";
   const backdrop = tw`absolute inset-0 bg-gray-800 opacity-75`;
-  const sidebar = tw`relative flex-1 flex flex-col w-[16rem] h-full bg-white border(r-2 gray-100)`;
+  const sidebar = tw
+    `relative flex-1 flex flex-col w-[16rem] h-full bg-white border(r-2 gray-100)`;
   const items = tw`pt-2 pb-16 px-4 overflow-x-auto`;
   return (
     <>
@@ -112,7 +115,8 @@ function MobileSidebar(props: { path: string }) {
         class={tw`hidden` + " toggle"}
         id="docs_sidebar"
         autocomplete="off"
-      ></input>
+      >
+      </input>
       <div class={container}>
         <label class={backdrop} for="docs_sidebar" />
         <div class={sidebar}>
@@ -128,7 +132,8 @@ function MobileSidebar(props: { path: string }) {
 function DesktopSidebar(props: { path: string }) {
   return (
     <nav
-      class={tw`w-[16rem] flex-shrink-0 hidden md:block py-8 pr-4 border(r-2 gray-100)`}
+      class={tw
+        `w-[16rem] flex-shrink-0 hidden md:block py-8 pr-4 border(r-2 gray-100)`}
     >
       <DocsSidebar path={props.path} />
     </nav>

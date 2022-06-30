@@ -11,7 +11,6 @@ import { virtualSheet } from "twind/sheets";
 
 import routes from "./fresh.gen.ts";
 
-
 const sheet = virtualSheet();
 sheet.reset();
 setup({ sheet, theme: { colors } });
@@ -24,5 +23,5 @@ await start(routes, {
     ctx.styles.splice(0, ctx.styles.length, ...sheet.target);
     const newSnapshot = sheet.reset();
     ctx.state.set("twindSnapshot", newSnapshot);
-  }
+  },
 });
