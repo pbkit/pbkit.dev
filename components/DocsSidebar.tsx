@@ -1,6 +1,7 @@
 /** @jsx h */
 
-import { apply, h, tw } from "../client_deps.ts";
+import { h } from "preact";
+import { apply, tw } from "@twind";
 import {
   CATEGORIES,
   TableOfContentsCategory,
@@ -32,7 +33,9 @@ export function SidebarCategory(props: {
 
   return (
     <li class={outerItem}>
-      <a href={href} class={outerLink}>{title}</a>
+      <a href={href} class={outerLink}>
+        {title}
+      </a>
       {entries.length > 0 && (
         <ol class={innerList}>
           {entries.map((entry) => (
@@ -54,7 +57,9 @@ export function SidebarEntry(props: {
   const innerLink = tw`${href == props.path ? linkActive : link} font-normal`;
   return (
     <li class={innerItem}>
-      <a href={href} class={innerLink}>{title}</a>
+      <a href={href} class={innerLink}>
+        {title}
+      </a>
     </li>
   );
 }

@@ -1,6 +1,7 @@
 /** @jsx h */
 
-import { h, tw } from "../client_deps.ts";
+import { h } from "preact";
+import { tw } from "@twind";
 
 interface NavbarProps {
   active: string;
