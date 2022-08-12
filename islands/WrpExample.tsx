@@ -5,20 +5,17 @@ import { tw } from "@twind";
 import {
   createEventBuffer,
   EventBuffer,
-} from "https://deno.land/x/pbkit@v0.0.45/core/runtime/async/event-buffer.ts";
-import {
-  createWrpChannel,
-  WrpChannel,
-} from "https://deno.land/x/wrp@v0.0.5/channel.ts";
-import { Type as WrpMessage } from "https://deno.land/x/wrp@v0.0.5/generated/messages/pbkit/wrp/WrpMessage.ts";
-import useWrpParentSocket from "https://deno.land/x/wrp@v0.0.5/react/useWrpParentSocket.ts";
-import useWrpServer from "https://deno.land/x/wrp@v0.0.5/react/useWrpServer.ts";
+} from "pbkit/core/runtime/async/event-buffer.ts";
+import { createWrpChannel, WrpChannel } from "wrp/channel.ts";
+import { Type as WrpMessage } from "wrp/generated/messages/pbkit/wrp/WrpMessage.ts";
+import useWrpParentSocket from "wrp/react/useWrpParentSocket.ts";
+import useWrpServer from "wrp/react/useWrpServer.ts";
 import {
   createServiceClient,
   methodDescriptors,
   Service,
 } from "../wrp-example/generated/services/pbkit/wrp/example/WrpExampleService.ts";
-import useWrpClientImpl from "https://deno.land/x/wrp@v0.0.5/react/useWrpClientImpl.ts";
+import useWrpClientImpl from "wrp/react/useWrpClientImpl.ts";
 
 export default function WrpExample() {
   const [sliderValue, setSliderValue] = useState(50);
@@ -29,11 +26,11 @@ export default function WrpExample() {
   const channel = useMemo(() => socket && createWrpChannel(socket), [socket]);
   const splitChannelResult = useMemo(
     () => channel && splitChannel(channel),
-    [channel],
+    [channel]
   );
   const wrpClientImpl = useWrpClientImpl(splitChannelResult?.guestChannel);
   const [serviceClient, setServiceClient] = useState<Service | undefined>(
-    undefined,
+    undefined
   );
   useEffect(() => {
     if (!wrpClientImpl) return;
@@ -61,9 +58,8 @@ export default function WrpExample() {
         res.header({});
         const value = getState().sliderValue;
         res.send({ value });
-        const off = stateChanges.on(
-          "sliderValue",
-          (value) => res.send({ value }),
+        const off = stateChanges.on("sliderValue", (value) =>
+          res.send({ value })
         );
         req.metadata?.on("cancel-response", teardown);
         req.metadata?.on("close", teardown);

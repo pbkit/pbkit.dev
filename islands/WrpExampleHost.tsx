@@ -2,9 +2,9 @@
 /** @jsxFrag Fragment */
 import { Fragment, h, useMemo, useState } from "preact";
 import { tw } from "@twind";
-import { createWrpChannel } from "https://deno.land/x/wrp@v0.0.5/channel.ts";
-import useWrpParentSocket from "https://deno.land/x/wrp@v0.0.5/react/useWrpParentSocket.ts";
-import useWrpServer from "https://deno.land/x/wrp@v0.0.5/react/useWrpServer.ts";
+import { createWrpChannel } from "wrp/channel.ts";
+import useWrpParentSocket from "wrp/react/useWrpParentSocket.ts";
+import useWrpServer from "wrp/react/useWrpServer.ts";
 import { methodDescriptors } from "../wrp-example/generated/services/pbkit/wrp/example/WrpExampleService.ts";
 
 export default function WrpExampleHost() {
@@ -19,9 +19,8 @@ export default function WrpExampleHost() {
         res.header({});
         const value = getState().sliderValue;
         res.send({ value });
-        const off = stateChanges.on(
-          "sliderValue",
-          (value) => res.send({ value }),
+        const off = stateChanges.on("sliderValue", (value) =>
+          res.send({ value })
         );
         req.metadata?.on("cancel-response", teardown);
         req.metadata?.on("close", teardown);

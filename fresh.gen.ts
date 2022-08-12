@@ -9,11 +9,10 @@ import * as $3 from "./routes/wrp-example-guest.tsx";
 import * as $4 from "./routes/wrp-example-host.tsx";
 import * as $5 from "./routes/wrp-example.tsx";
 import * as $6 from "./routes/wrp-iframe-host.tsx";
-import * as $$0 from "./islands/Counter.tsx";
-import * as $$1 from "./islands/WrpExample.tsx";
-import * as $$2 from "./islands/WrpExampleGuest.tsx";
-import * as $$3 from "./islands/WrpExampleHost.tsx";
-import * as $$4 from "./islands/WrpIframeHost.tsx";
+import * as $$0 from "./islands/WrpExample.tsx";
+import * as $$1 from "./islands/WrpExampleGuest.tsx";
+import * as $$2 from "./islands/WrpExampleHost.tsx";
+import * as $$3 from "./islands/WrpIframeHost.tsx";
 
 const manifest = {
   routes: {
@@ -26,11 +25,10 @@ const manifest = {
     "./routes/wrp-iframe-host.tsx": $6,
   },
   islands: {
-    "./islands/Counter.tsx": $$0,
-    "./islands/WrpExample.tsx": $$1,
-    "./islands/WrpExampleGuest.tsx": $$2,
-    "./islands/WrpExampleHost.tsx": $$3,
-    "./islands/WrpIframeHost.tsx": $$4,
+    "./islands/WrpExample.tsx": $$0,
+    "./islands/WrpExampleGuest.tsx": $$1,
+    "./islands/WrpExampleHost.tsx": $$2,
+    "./islands/WrpIframeHost.tsx": $$3,
   },
   baseUrl: import.meta.url,
 };
