@@ -9,7 +9,7 @@ import {
 import { createWrpChannel, WrpChannel } from "wrp/channel.ts";
 import { Type as WrpMessage } from "wrp/generated/messages/pbkit/wrp/WrpMessage.ts";
 import useWrpParentSocket from "wrp/react/useWrpParentSocket.ts";
-import useWrpServer from "wrp/react/useWrpServer.ts";
+import { rpc, useWrpServer } from "wrp/react/server.ts";
 import {
   createServiceClient,
   methodDescriptors,
@@ -26,11 +26,11 @@ export default function WrpExample() {
   const channel = useMemo(() => socket && createWrpChannel(socket), [socket]);
   const splitChannelResult = useMemo(
     () => channel && splitChannel(channel),
-    [channel]
+    [channel],
   );
   const wrpClientImpl = useWrpClientImpl(splitChannelResult?.guestChannel);
   const [serviceClient, setServiceClient] = useState<Service | undefined>(
-    undefined
+    undefined,
   );
   useEffect(() => {
     if (!wrpClientImpl) return;
@@ -51,34 +51,25 @@ export default function WrpExample() {
   const onClick = async () => {
     alert((await serviceClient?.getTextValue({}))?.text);
   };
-  useWrpServer(splitChannelResult?.hostChannel, { sliderValue, text }, [
-    [
+  useWrpServer(
+    splitChannelResult?.hostChannel,
+    { sliderValue, text },
+    rpc(
       methodDescriptors.getSliderValue,
-      ({ req, res, getState, stateChanges }) => {
-        res.header({});
-        const value = getState().sliderValue;
-        res.send({ value });
-        const off = stateChanges.on("sliderValue", (value) =>
-          res.send({ value })
-        );
-        req.metadata?.on("cancel-response", teardown);
-        req.metadata?.on("close", teardown);
-        function teardown() {
-          off();
-          res.end({});
-        }
+      async function* ({ req, getState, stateChanges }) {
+        const { sliderValue: value } = getState();
+        yield { value };
+        for await (const value of stateChanges.sliderValue) yield { value };
       },
-    ],
-    [
+    ),
+    rpc(
       methodDescriptors.getTextValue,
-      ({ res, getState }) => {
+      async function ({ req, getState }) {
         const { text } = getState();
-        res.header({});
-        res.send({ text });
-        res.end({});
+        return { text };
       },
-    ],
-  ]);
+    ),
+  );
   const styles = {
     main: tw`flex flex-col items-center gap-2 p-2 text-center`,
     button: (color: string) =>

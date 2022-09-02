@@ -4,7 +4,7 @@ import { Fragment, h, useMemo, useState } from "preact";
 import { tw } from "@twind";
 import { createWrpChannel } from "wrp/channel.ts";
 import useWrpParentSocket from "wrp/react/useWrpParentSocket.ts";
-import useWrpServer from "wrp/react/useWrpServer.ts";
+import { rpc, useWrpServer } from "wrp/react/server.ts";
 import { methodDescriptors } from "../wrp-example/generated/services/pbkit/wrp/example/WrpExampleService.ts";
 
 export default function WrpExampleHost() {
@@ -12,34 +12,25 @@ export default function WrpExampleHost() {
   const [text, setText] = useState("Hello World");
   const { socket } = useWrpParentSocket();
   const channel = useMemo(() => socket && createWrpChannel(socket), [socket]);
-  useWrpServer(channel, { sliderValue, text }, [
-    [
+  useWrpServer(
+    channel,
+    { sliderValue, text },
+    rpc(
       methodDescriptors.getSliderValue,
-      ({ req, res, getState, stateChanges }) => {
-        res.header({});
-        const value = getState().sliderValue;
-        res.send({ value });
-        const off = stateChanges.on("sliderValue", (value) =>
-          res.send({ value })
-        );
-        req.metadata?.on("cancel-response", teardown);
-        req.metadata?.on("close", teardown);
-        function teardown() {
-          off();
-          res.end({});
-        }
+      async function* ({ req, getState, stateChanges }) {
+        const { sliderValue: value } = getState();
+        yield { value };
+        for await (const value of stateChanges.sliderValue) yield { value };
       },
-    ],
-    [
+    ),
+    rpc(
       methodDescriptors.getTextValue,
-      ({ res, getState }) => {
+      async function ({ req, getState }) {
         const { text } = getState();
-        res.header({});
-        res.send({ text });
-        res.end({});
+        return { text };
       },
-    ],
-  ]);
+    ),
+  );
   const styles = {
     main: tw`flex flex-col items-center gap-4 p-4 text-center`,
     button: (color: string) =>

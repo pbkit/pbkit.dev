@@ -10,7 +10,7 @@
     "twind": "https://esm.sh/twind@0.16.16",
     "twind/": "https://esm.sh/twind@0.16.16/",
 
-    "wrp/": "https://deno.land/x/wrp@v0.0.5/",
+    "wrp/": "https://deno.land/x/wrp@v0.0.12/",
     "pbkit/": "https://deno.land/x/pbkit@v0.0.45/",
 
     "@markdown": "./utils/markdown.ts"
