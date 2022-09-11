@@ -1,5 +1,5 @@
-export * from "https://esm.sh/preact@10.8.1";
-export { jsx, jsxDEV, jsxs } from "https://esm.sh/preact@10.8.1/jsx-runtime";
+export * from "https://esm.sh/preact@10.10.6";
+export { jsx, jsxDEV, jsxs } from "https://esm.sh/preact@10.10.6/jsx-runtime";
 export {
   useCallback,
   useContext,
@@ -12,7 +12,7 @@ export {
   useReducer,
   useRef,
   useState,
-} from "https://esm.sh/preact@10.8.1/hooks";
+} from "https://esm.sh/preact@10.10.6/hooks";
 export type {
   CreateHandle,
   EffectCallback,
@@ -21,4 +21,4 @@ export type {
   Reducer,
   Ref,
   StateUpdater,
-} from "https://esm.sh/preact@10.8.1/hooks";
+} from "https://esm.sh/preact@10.10.6/hooks";

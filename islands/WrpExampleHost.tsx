@@ -1,7 +1,5 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
-import { Fragment, h, useMemo, useState } from "preact";
-import { tw } from "@twind";
+import { useMemo, useState } from "preact/hooks";
+import { tw } from "twind";
 import { createWrpChannel } from "wrp/channel.ts";
 import useWrpParentSocket from "wrp/react/useWrpParentSocket.ts";
 import { rpc, useWrpServer } from "wrp/react/server.ts";
@@ -41,13 +39,13 @@ export default function WrpExampleHost() {
   return (
     <>
       <div class={styles.main}>
-        <h1 class={tw`text-2xl font-bold`}>WrpExampleServer (Host)</h1>
-        <div class={tw`flex flex-col gap-4`}>
+        <h1 class="text-2xl font-bold">WrpExampleServer (Host)</h1>
+        <div class="flex flex-col gap-4">
           <label class={styles.label("blue")}>
             <b>SliderValue</b>
             <input
               type="range"
-              class={tw`w-full`}
+              class="w-full"
               value={sliderValue}
               min="0"
               max="100"
@@ -58,7 +56,7 @@ export default function WrpExampleHost() {
             <b>TextValue</b>
             <input
               type="text"
-              class={tw`p-2`}
+              class="p-2"
               value={text}
               onInput={(e) => setText((e.target as any).value)}
             />

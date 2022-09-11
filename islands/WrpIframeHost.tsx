@@ -1,7 +1,5 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
-import { Fragment, h, useEffect, useMemo, useState } from "preact";
-import { tw } from "@twind";
+import { useMemo, useState } from "preact/hooks";
+import { tw } from "twind";
 import { createWrpChannel } from "wrp/channel.ts";
 import useWrpIframeSocket from "wrp/react/useWrpIframeSocket.ts";
 import { rpc, useWrpServer } from "wrp/react/server.ts";
@@ -42,11 +40,11 @@ export default function WrpIframeHost() {
   return (
     <>
       <div class={styles.main}>
-        <h1 class={tw`text-2xl font-bold`}>WrpExampleServer (Host)</h1>
+        <h1 class="text-2xl font-bold">WrpExampleServer (Host)</h1>
         <p>
           You can use pbkit{" "}
           <a
-            class={tw`text-blue-500 font-bold`}
+            class="text-blue-500 font-bold"
             href="https://chrome.google.com/webstore/detail/pbkit-devtools/fjacmiijeihblfhobghceofniolonhca"
             target="_blank"
           >
@@ -54,7 +52,7 @@ export default function WrpIframeHost() {
           </a>{" "}
           here!
         </p>
-        <p class={tw`cursor-pointer`} onClick={() => setIsFold((v) => !v)}>
+        <p class="cursor-pointer" onClick={() => setIsFold((v) => !v)}>
           Show protobuf schema in this example {isFold ? "▼" : "▲"}
         </p>
         <code
@@ -64,12 +62,12 @@ export default function WrpIframeHost() {
         >
           {proto}
         </code>
-        <div class={tw`flex flex-col gap-4`}>
+        <div class="flex flex-col gap-4">
           <label class={styles.label("blue")}>
             <b>SliderValue</b>
             <input
               type="range"
-              class={tw`w-full`}
+              class="w-full"
               value={sliderValue}
               min="0"
               max="100"
@@ -80,14 +78,14 @@ export default function WrpIframeHost() {
             <b>TextValue</b>
             <input
               type="text"
-              class={tw`p-1`}
+              class="p-1"
               value={text}
               onInput={(e) => setText((e.target as any).value)}
             />
           </label>
         </div>
         <div>
-          <h2 class={tw`text-2xl font-bold my-4`}>iframe</h2>
+          <h2 class="text-2xl font-bold my-4">iframe</h2>
           <iframe ref={iframeRef} src="/wrp-example-guest" />
         </div>
       </div>

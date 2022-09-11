@@ -1,10 +1,6 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
-
-import { Fragment, h } from "preact";
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { apply, tw } from "@twind";
+import { apply, tw } from "twind";
 import { gfm } from "@markdown";
 import DocsSidebar from "../../components/DocsSidebar.tsx";
 import Footer from "../../components/Footer.tsx";
@@ -67,7 +63,7 @@ function Main(props: { path: string; page: Page }) {
       <MobileSidebar path={props.path} />
       <div class={main}>
         <MobileSidebarIcon />
-        <div class={tw`w-full flex gap-6`}>
+        <div class="w-full flex gap-6">
           <DesktopSidebar path={props.path} />
           <Content page={props.page} />
         </div>
@@ -79,12 +75,11 @@ function Main(props: { path: string; page: Page }) {
 function MobileSidebarIcon() {
   return (
     <div
-      class={tw
-        `md:hidden w-min ml-auto p-2 mt-4 rounded-full sticky top-4 right-0 bg-gray-100`}
+      class="md:hidden w-min ml-auto p-2 mt-4 rounded-full sticky top-4 right-0 bg-gray-100"
     >
       <label for="docs_sidebar">
         <svg
-          class={tw`h-6 w-6`}
+          class="h-6 w-6"
           stroke="currentColor"
           fill="none"
           viewBox="0 0 24 24"
@@ -132,8 +127,7 @@ function MobileSidebar(props: { path: string }) {
 function DesktopSidebar(props: { path: string }) {
   return (
     <nav
-      class={tw
-        `w-[16rem] flex-shrink-0 hidden md:block py-8 pr-4 border(r-2 gray-100)`}
+      class="w-[16rem] flex-shrink-0 hidden md:block py-8 pr-4 border(r-2 gray-100)"
     >
       <DocsSidebar path={props.path} />
     </nav>
@@ -171,7 +165,7 @@ function ForwardBackButtons(props: { slug: string }) {
   const lower = tw`text-gray-900 font-medium`;
 
   return (
-    <div class={tw`mt-8 flex flex(col md:row) gap-4`}>
+    <div class="mt-8 flex flex(col md:row) gap-4">
       {previous && (
         <a href={previous.href} class={tw`${button} text-left`}>
           <span class={upper}>{"←"} Previous</span>

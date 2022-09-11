@@ -1,7 +1,5 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
-import { Fragment, h, useEffect, useMemo, useState } from "preact";
-import { tw } from "@twind";
+import { useEffect, useMemo, useState } from "preact/hooks";
+import { tw } from "twind";
 import { createWrpChannel } from "wrp/channel.ts";
 import useWrpParentSocket from "wrp/react/useWrpParentSocket.ts";
 import useWrpClientImpl from "wrp/react/useWrpClientImpl.ts";
@@ -38,20 +36,20 @@ export default function WrpExampleGuest() {
   };
   return (
     <div class={styles.main}>
-      <h1 class={tw`text-2xl font-bold`}>WrpExampleClient (Guest)</h1>
+      <h1 class="text-2xl font-bold">WrpExampleClient (Guest)</h1>
       <p>GetSliderValue is requested on initialized</p>
-      <div class={tw`flex flex-col items-center gap-4`}>
-        <div class={tw`flex items-center gap-4`}>
+      <div class="flex flex-col items-center gap-4">
+        <div class="flex items-center gap-4">
           <label class={styles.label("blue")}>
             <b>Slider value</b>
-            <p class={tw`text-4xl`}>{sliderValue}</p>
+            <p class="text-4xl">{sliderValue}</p>
           </label>
           <label class={styles.label("red")}>
             <b># of responses (GetSliderValue)</b>
-            <p class={tw`text-4xl`}>{responseCount}</p>
+            <p class="text-4xl">{responseCount}</p>
           </label>
         </div>
-        <div class={tw`w-full flex-1 flex flex-col items-center gap-2`}>
+        <div class="w-full flex-1 flex flex-col items-center gap-2">
           <button class={styles.button("blue")} onClick={onClick}>
             Get TextValue from Server
           </button>
@@ -72,12 +70,12 @@ function useWrpExampleServiceClient() {
   const channel = useMemo(() => socket && createWrpChannel(socket), [socket]);
   const wrpClientImpl = useWrpClientImpl(channel);
   const [serviceClient, setServiceClient] = useState<Service | undefined>(
-    undefined
+    undefined,
   );
   useEffect(() => {
     if (!wrpClientImpl) return;
     setServiceClient(
-      createServiceClient(wrpClientImpl, { devtools: { tags: ["WrpClient"] } })
+      createServiceClient(wrpClientImpl, { devtools: { tags: ["WrpClient"] } }),
     );
   }, [wrpClientImpl]);
   return serviceClient;
