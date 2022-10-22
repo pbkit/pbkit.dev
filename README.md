@@ -7,7 +7,7 @@ Install fresh CLI
 Start the project:
 
 ```sh
-deno task dev
+deno task start
 ```
 
 After adding, removing, or moving a page in the `routes` or directory, or
