@@ -3,6 +3,20 @@ import { tw } from "twind";
 import NavigationBar from "../components/Navbar.tsx";
 import Footer from "../components/Footer.tsx";
 
+export const handler: Handlers = {
+  GET(req, ctx) {
+    const accept = req.headers.get("accept");
+    if (accept && !accept.includes("text/html")) {
+      const path = `https://deno.land/x/pbkit/cli/pbkit/entrypoint.ts`;
+      return new Response(`Redirecting to ${path}`, {
+        headers: { Location: path },
+        status: 307,
+      });
+    }
+    return ctx.render();
+  },
+};
+
 export default function MainPage() {
   return (
     <>
@@ -26,7 +40,8 @@ export default function MainPage() {
 }
 
 function Hero() {
-  const container = tw`max-w-screen-lg mx-auto w-full h(48 sm:64) flex items-center tracking-tight`;
+  const container =
+    tw`max-w-screen-lg mx-auto w-full h(48 sm:64) flex items-center tracking-tight`;
   const title = tw`text(4xl sm:5xl lg:6xl gray-900) font-extrabold`;
   const subtitle = tw`mt-4 text(xl sm:2xl gray-800) `;
 
@@ -42,12 +57,11 @@ function Hero() {
 
 function Intro() {
   return (
-    <section
-      class="max-w-screen-lg mx-auto mb-16 px(4 sm:6 md:8) space-y-4 tracking-tight"
-    >
+    <section class="max-w-screen-lg mx-auto mb-16 px(4 sm:6 md:8) space-y-4 tracking-tight">
       <p class="text(xl gray-800)">
-        <b>pbkit</b> is a collection of tools for modern web development with
-        protocol buffers.
+        <b>pbkit</b>{" "}
+        is a collection of tools for modern web development with protocol
+        buffers.
       </p>
       <div class="grid sm:grid-cols-2 gap-4">
         <a
@@ -80,9 +94,7 @@ function Intro() {
           href="/docs/wrp"
           class="bg(white) shadow-lg hover:shadow-2xl active:shadow-xl transition-shadow p-4 rounded-md relative overflow-hidden"
         >
-          <h1 class="text(2xl) font-bold">
-            wrp - RPC protocol for WebView
-          </h1>
+          <h1 class="text(2xl) font-bold">wrp - RPC protocol for WebView</h1>
           <h2 class="text(lg)">Webview/worker Request Protocol</h2>
           <p class="mt-4">
             Transport messages between Native and WebView using your protobuf
@@ -113,16 +125,12 @@ function Intro() {
         >
           <h1 class="text(2xl) font-bold">Chrome DevTools</h1>
           <h2 class="text(lg)">Chrome DevTools for pbkit</h2>
-          <p class="mt-4">
-            Compatible with any rpc client you use with pbkit.
-          </p>
+          <p class="mt-4">Compatible with any rpc client you use with pbkit.</p>
           <span class="absolute text(9xl) -bottom-4 right-2 opacity-20">
             🌏
           </span>
         </a>
-        <div
-          class="text(xl) flex items-center justify-center font-semibold"
-        >
+        <div class="text(xl) flex items-center justify-center font-semibold">
           And more... 🚀
         </div>
       </div>
@@ -132,9 +140,7 @@ function Intro() {
 
 function GettingStarted() {
   return (
-    <section
-      class="max-w-screen-lg mx-auto my-16 px(4 sm:6 md:8) space-y-4"
-    >
+    <section class="max-w-screen-lg mx-auto my-16 px(4 sm:6 md:8) space-y-4">
       <h2 id="getting-started" class="text(xl gray-800) font-bold">
         <a href="#getting-started" class="hover:underline">
           Getting started
@@ -157,9 +163,7 @@ function GettingStarted() {
         Once installed, you can use the `pollapo` command to install your
         protobuf schema package.
       </p>
-      <pre class="overflow-x-auto py-2 px-4 bg(gray-100)">
-        pollapo install
-      </pre>
+      <pre class="overflow-x-auto py-2 px-4 bg(gray-100)">pollapo install</pre>
       <p class="text-gray-800">
         Now you can generate en/decode typescript code from your protobuf
         schema.
@@ -179,9 +183,7 @@ function GettingStarted() {
 function Example() {
   return (
     <>
-      <section
-        class="max-w-screen-lg mx-auto my-16 px(4 sm:6 md:8) space-y-4"
-      >
+      <section class="max-w-screen-lg mx-auto my-16 px(4 sm:6 md:8) space-y-4">
         <h2 id="getting-started" class="text(xl gray-800) font-bold">
           <a href="#getting-started" class="hover:underline">
             What is Protocol Buffers?
@@ -193,9 +195,7 @@ function Example() {
           smaller, faster, and simpler.
         </p>
       </section>
-      <section
-        class="max-w-screen-lg mx-auto my-16 px(4 sm:6 md:8) space-y-4"
-      >
+      <section class="max-w-screen-lg mx-auto my-16 px(4 sm:6 md:8) space-y-4">
         <h2 id="example" class="text(xl gray-800) font-bold">
           <a href="#example" class="hover:underline">
             Community
@@ -206,9 +206,7 @@ function Example() {
           discord!
         </p>
       </section>
-      <section
-        class="max-w-screen-lg mx-auto my-16 px(4 sm:6 md:8) space-y-4"
-      >
+      <section class="max-w-screen-lg mx-auto my-16 px(4 sm:6 md:8) space-y-4">
         <h2 id="example" class="text(xl gray-800) font-bold">
           <a href="#example" class="hover:underline">
             Misc

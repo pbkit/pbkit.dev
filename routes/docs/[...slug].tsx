@@ -74,9 +74,7 @@ function Main(props: { path: string; page: Page }) {
 
 function MobileSidebarIcon() {
   return (
-    <div
-      class="md:hidden w-min ml-auto p-2 mt-4 rounded-full sticky top-4 right-0 bg-gray-100"
-    >
+    <div class="md:hidden w-min ml-auto p-2 mt-4 rounded-full sticky top-4 right-0 bg-gray-100">
       <label for="docs_sidebar">
         <svg
           class="h-6 w-6"
@@ -100,8 +98,8 @@ function MobileSidebarIcon() {
 function MobileSidebar(props: { path: string }) {
   const container = tw`fixed inset-0 flex z-40 hidden` + " toggled";
   const backdrop = tw`absolute inset-0 bg-gray-800 opacity-75`;
-  const sidebar = tw
-    `relative flex-1 flex flex-col w-[16rem] h-full bg-white border(r-2 gray-100)`;
+  const sidebar =
+    tw`relative flex-1 flex flex-col w-[16rem] h-full bg-white border(r-2 gray-100)`;
   const items = tw`pt-2 pb-16 px-4 overflow-x-auto`;
   return (
     <>
@@ -126,9 +124,7 @@ function MobileSidebar(props: { path: string }) {
 
 function DesktopSidebar(props: { path: string }) {
   return (
-    <nav
-      class="w-[16rem] flex-shrink-0 hidden md:block py-8 pr-4 border(r-2 gray-100)"
-    >
+    <nav class="w-[16rem] flex-shrink-0 hidden md:block py-8 pr-4 border(r-2 gray-100)">
       <DocsSidebar path={props.path} />
     </nav>
   );

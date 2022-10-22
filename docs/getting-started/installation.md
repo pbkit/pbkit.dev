@@ -13,7 +13,7 @@
    ```
 1. Run below
    ```bash
-   deno run -A --unstable https://deno.land/x/pbkit/cli/pbkit/entrypoint.ts use
+   deno run -A --unstable https://pbkit.dev/ use
    ```
 
 # Other methods
