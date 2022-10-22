@@ -40,7 +40,8 @@ export default function MainPage() {
 }
 
 function Hero() {
-  const container = tw`max-w-screen-lg mx-auto w-full h(48 sm:64) flex items-center tracking-tight`;
+  const container =
+    tw`max-w-screen-lg mx-auto w-full h(48 sm:64) flex items-center tracking-tight`;
   const title = tw`text(4xl sm:5xl lg:6xl gray-900) font-extrabold`;
   const subtitle = tw`mt-4 text(xl sm:2xl gray-800) `;
 
@@ -58,8 +59,9 @@ function Intro() {
   return (
     <section class="max-w-screen-lg mx-auto mb-16 px(4 sm:6 md:8) space-y-4 tracking-tight">
       <p class="text(xl gray-800)">
-        <b>pbkit</b> is a collection of tools for modern web development with
-        protocol buffers.
+        <b>pbkit</b>{" "}
+        is a collection of tools for modern web development with protocol
+        buffers.
       </p>
       <div class="grid sm:grid-cols-2 gap-4">
         <a

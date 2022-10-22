@@ -19,9 +19,7 @@ export default function Navbar({ active }: NavbarProps) {
 
   return (
     <nav class="bg(gray-50) py-2 border(t-2 b-2 gray-100)">
-      <div
-        class="flex items-center justify-between max-w-screen-lg mx-auto"
-      >
+      <div class="flex items-center justify-between max-w-screen-lg mx-auto">
         <a class="flex items-center gap-2 mx-4 tracking-tight" href="/">
           <img src="/pbkit.svg" width="32" />
           {/* <b>pbkit</b> */}
