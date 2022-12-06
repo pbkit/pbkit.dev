@@ -203,7 +203,14 @@ function Example() {
         </h2>
         <p class="text-gray-800">
           If you want to contribute or get in trouble, feel free to join our
-          discord!
+          {" "}
+          <a
+            href="https://discord.com/invite/PHmV3nhvQq"
+            target="_blank"
+            class="text-blue-600 hover:underline"
+          >
+            Discord
+          </a>!
         </p>
       </section>
       <section class="max-w-screen-lg mx-auto my-16 px(4 sm:6 md:8) space-y-4">
