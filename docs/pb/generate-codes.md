@@ -1,11 +1,11 @@
 The `pb gen` command is to generate code.
 
-## pb gen json
+## pb gen schema
 
-You can generate json with specifying protobuf files.
+You can generate schema representation in json with specifying protobuf files.
 
 ```bash
-pb gen json a.proto b.proto
+pb gen schema a.proto b.proto
 ```
 
 Also with appropriate options, you can generate json more easily.
@@ -18,7 +18,7 @@ Also with appropriate options, you can generate json more easily.
 So in most of use cases, you can use just below commands to generate json.
 
 ```bash
-pb gen json --entry-path=".pollapo"
+pb gen schema --entry-path=".pollapo"
 ```
 
 ## pb gen ts
