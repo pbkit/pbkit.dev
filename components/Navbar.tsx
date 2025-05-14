@@ -7,7 +7,7 @@ interface NavbarProps {
 export default function Navbar({ active }: NavbarProps) {
   const items = [
     { name: "Home", href: "/" },
-    { name: "Docs", href: "/docs" },
+    { name: "Docs", href: "/docs/introduction" },
     { name: "Discord", href: "https://discord.com/invite/PHmV3nhvQq" },
     { name: "Github", href: "https://github.com/pbkit" },
   ];
