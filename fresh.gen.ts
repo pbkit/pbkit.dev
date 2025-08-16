@@ -6,6 +6,7 @@ import * as $_app from "./routes/_app.tsx";
 import * as $docs_slug_ from "./routes/docs/[...slug].tsx";
 import * as $gfm_css from "./routes/gfm.css.ts";
 import * as $index from "./routes/index.tsx";
+import * as $pycon from "./routes/pycon.tsx";
 import * as $wrp_example_guest from "./routes/wrp-example-guest.tsx";
 import * as $wrp_example_host from "./routes/wrp-example-host.tsx";
 import * as $wrp_example from "./routes/wrp-example.tsx";
@@ -22,6 +23,7 @@ const manifest = {
     "./routes/docs/[...slug].tsx": $docs_slug_,
     "./routes/gfm.css.ts": $gfm_css,
     "./routes/index.tsx": $index,
+    "./routes/pycon.tsx": $pycon,
     "./routes/wrp-example-guest.tsx": $wrp_example_guest,
     "./routes/wrp-example-host.tsx": $wrp_example_host,
     "./routes/wrp-example.tsx": $wrp_example,
