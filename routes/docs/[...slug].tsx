@@ -1,4 +1,3 @@
-import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { apply, tw } from "twind";
 import { gfm } from "@markdown";
@@ -45,10 +44,10 @@ export const handler: Handlers<Data> = {
 export default function DocsPage(props: PageProps<Data>) {
   return (
     <>
-      <Head>
+      <head>
         <title>{props.data.page?.title ?? "Not Found"} | pbkit docs</title>
         <link rel="stylesheet" href="/gfm.css" />
-      </Head>
+      </head>
       <NavigationBar active="/docs" />
       <Main path={props.url.pathname} page={props.data.page} />
       <Footer />

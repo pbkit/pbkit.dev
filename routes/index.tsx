@@ -1,4 +1,3 @@
-import { Head } from "$fresh/runtime.ts";
 import { tw } from "twind";
 import NavigationBar from "../components/Navbar.tsx";
 import Footer from "../components/Footer.tsx";
@@ -20,13 +19,13 @@ export const handler: Handlers = {
 export default function MainPage() {
   return (
     <>
-      <Head>
+      <head>
         <title>pbkit - Protobuf toolkit for modern web development</title>
         <meta
           name="description"
           content="Protobuf toolkit for modern Web development"
         />
-      </Head>
+      </head>
       <NavigationBar active="/" />
       <div class="bg(gray-50)">
         <Hero />

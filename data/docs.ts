@@ -1,4 +1,4 @@
-import TOC from "../docs/toc.json" assert { type: "json" };
+import TOC from "../docs/toc.json" with { type: "json" };
 import { titleCase } from "https://deno.land/x/case@2.1.1/mod.ts";
 import { walk } from "https://deno.land/std@0.130.0/fs/mod.ts";
 import * as path from "https://deno.land/std@0.130.0/path/mod.ts";
